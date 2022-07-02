@@ -1,0 +1,55 @@
+/* ##############################
+*
+* index.css
+* https://www.primefaces.org/primeflex/
+*
+############################## */
+
+@import url('https://fonts.googleapis.com/css2?family=Murecho:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ########## サイト全体 ########## */
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  font-family: 'Murecho',  sans-serif;
+}
+
+/* エレメントリセット */
+a {
+  text-decoration: none;
+  color: #797775;
+}
+
+img {
+  vertical-align: bottom;
+}
+
+/* カスタムスクロール */
+@media screen and (min-width: 992px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #d4d4d4;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #737373;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #525252;
+  }
+}
+
+/* ########## 個別 ########## */
+/* text overflow */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 9rem;
+}
+
