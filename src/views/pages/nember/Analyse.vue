@@ -1,10 +1,10 @@
 <template>
-  <section class="flex flex-column">
+  <section class="my-section">
     <!-- パンくず -->
     <AppBreadcrumb :label="[{ label: 'メンバー管理' }, { label: 'データ分析' }]" />
 
     <!-- コンテンツ -->
-    <div class="px-2 pb-2 pt-1 md:px-6 md:pb-6 md:pt-3">
+    <div class="my-contents">
       <!-- タイトル -->
       <AppTitle icon="pi-chart-line" label="データ分析" />
 

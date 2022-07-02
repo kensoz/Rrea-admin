@@ -1,11 +1,12 @@
 /* ##############################
 *
-* index.css
+* index.scss
 * https://www.primefaces.org/primeflex/
 *
 ############################## */
 
 @import url('https://fonts.googleapis.com/css2?family=Murecho:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'primeflex/primeflex.scss';
 
 /* ########## サイト全体 ########## */
 body {
@@ -52,4 +53,27 @@ img {
   white-space: nowrap;
   max-width: 9rem;
 }
+
+/* ########## Reuse Classes ########## */
+// section
+.my-section {
+  @include styleclass(
+    'flex flex-column'
+  );
+}
+
+// section contents
+.my-contents {
+  @include styleclass(
+    'px-2 pb-2 pt-1 md:px-6 md:pb-6 md:pt-3'
+  );
+}
+
+// dashboard contents
+.my-dashcontents {
+  @include styleclass(
+    'px-2 pb-2 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100'
+  );
+}
+
 

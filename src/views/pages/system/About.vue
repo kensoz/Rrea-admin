@@ -1,5 +1,5 @@
 <template>
-  <section class="flex flex-column">
+  <section class="my-section">
     <!-- パンくず -->
     <AppBreadcrumb :label="[{ label: 'システム管理' }, { label: 'アバウト' }]" />
 

@@ -1,17 +1,17 @@
 <template>
-  <section class="flex flex-column">
+  <section class="my-section">
     <!-- ようこそ -->
     <div class="px-2 py-2 md:px-3 border-bottom-1 border-100">
       <HomeWelcome />
     </div>
 
     <!-- クライアント -->
-    <div class="px-2 pb-2 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100">
+    <div class="my-dashcontents">
       <HomeClient />
     </div>
 
     <!-- 図表 -->
-    <div class="px-2 pb-2 pt-1 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100">
+    <div class="my-dashcontents">
       <!-- タイトル -->
       <div class="my-3">
         <span class="pr-2"><i class="pi pi-cloud" style="color: var(--primary-color)" /></span>
@@ -29,12 +29,12 @@
     </div>
 
     <!-- システムデータ -->
-    <div class="px-2 pb-2 pt-1 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100">
+    <div class="my-dashcontents">
       <HomeData />
     </div>
 
     <!-- ショートカット -->
-    <div class="px-2 pb-4 pt-1 md:px-3 md:pb-5 md:pt-2 xl:px-6 xl:pb-5 xl:pt-3">
+    <div class="px-2 pb-4 md:px-3 md:pb-5 md:pt-2 xl:px-6 xl:pb-5 xl:pt-3">
       <HomeLink />
     </div>
   </section>

@@ -4,9 +4,9 @@ import router from './router'
 import { createPinia } from 'pinia'
 
 // ----- css & primeVue css -----
-import './styles/index.css'
-import.meta.env.MODE === 'development' && import('../src/styles/light.css')
-// import.meta.env.MODE === 'development' && import('../src/styles/dark.css')
+import './styles/index.scss'
+import.meta.env.MODE === 'development' && import('../public/theme/light.css')
+// import.meta.env.MODE === 'development' && import('../public/theme/dark.css')
 import 'primevue/resources/primevue.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'

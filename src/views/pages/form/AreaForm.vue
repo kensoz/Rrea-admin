@@ -1,9 +1,9 @@
 <template>
-  <section class="flex flex-column">
+  <section class="my-section">
     <!-- パンくず -->
     <AppBreadcrumb :label="[{ label: 'フォーム管理' }, { label: 'エリア' }]" />
     <!-- コンテンツ -->
-    <div class="px-2 pb-2 pt-1 md:px-6 md:pb-6 md:pt-3">
+    <div class="my-contents">
       <!-- メッセージ -->
       <Message severity="warn">センサーで自動更新しますので、閲覧のみです</Message>
 
