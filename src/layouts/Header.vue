@@ -23,7 +23,11 @@
       />
 
       <!-- GitHub -->
-      <Button icon="pi pi-github" class="mx-3 p-button-rounded p-button-outlined p-button-sm" />
+      <Button
+        icon="pi pi-github"
+        class="mx-3 p-button-rounded p-button-outlined p-button-sm"
+        @click="link('https://github.com/kensoz/Rrea-admin')"
+      />
 
       <!-- 管理者ボタン -->
       <Button

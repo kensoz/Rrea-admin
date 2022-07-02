@@ -85,7 +85,7 @@
   const mit = 'https://img.shields.io/badge/License-MIT-0284C7.svg?style=flat-square'
 
   const url = {
-    admin: '',
+    admin: 'https://github.com/kensoz/Rrea-admin',
     client: 'https://github.com/kensoz/Rrea-client',
     clinetSite: '',
     server: 'https://github.com/kensoz/Rrea-server',
