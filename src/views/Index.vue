@@ -53,10 +53,10 @@
   // ----- use hooks -----
   const { messageToast } = useHooks()
   const mainStore = useMainStore()
-  const { isDark, isNavBar } = storeToRefs(mainStore)
+  const { isDark, isNavBar, isFirstLogin } = storeToRefs(mainStore)
 
   // ----- lifecycle -----
   onMounted((): void => {
-    messageToast('ログイン成功しました')
+    isFirstLogin.value && messageToast('ログイン成功しました')
   })
 </script>

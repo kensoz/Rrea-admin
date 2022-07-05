@@ -94,9 +94,7 @@ const router: Router = createRouter({
 
 // Navigation Guards
 router.beforeEach((to, from, next): void => {
-  const mainStore = useMainStore()
-
-  if (!mainStore.isLoggedIn && to.name !== 'Login') {
+  if (!sessionStorage.getItem('isLoggedIn') && to.name !== 'Login') {
     next({ name: 'Login' })
   } else {
     next()

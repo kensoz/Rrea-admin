@@ -16,7 +16,7 @@ export default function useHooks() {
   const toast = useToast()
   const confirml = useConfirm()
   const mainStore = useMainStore()
-  const { admin, isLoggedIn } = storeToRefs(mainStore)
+  const { admin } = storeToRefs(mainStore)
 
   // ----- Functions -----
 
@@ -41,10 +41,10 @@ export default function useHooks() {
     await axios
       .delete(`/api/v1/auth/${admin.value.id}`)
       .then((): void => {
-        isLoggedIn.value = false
+        sessionStorage.clear()
         Object.assign(admin.value, {
           id: 'guest',
-          password: 'guest',
+          passWord: '*****',
           permission: 2,
         })
 

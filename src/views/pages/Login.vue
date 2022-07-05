@@ -72,7 +72,7 @@
   const router = useRouter()
   const { errorToast } = useHooks()
   const mainStore = useMainStore()
-  const { isDark, isLoggedIn, permission, admin } = storeToRefs(mainStore)
+  const { isDark, isFirstLogin, admin } = storeToRefs(mainStore)
 
   // ----- 登録 -----
   let isInvalidID = ref<boolean>(false)
@@ -85,9 +85,12 @@
       .then((res): void => {
         if (res.data.code === 10001) {
           // ログイン成功
-          isLoggedIn.value = true
+          isFirstLogin.value = true
+          sessionStorage.setItem('isLoggedIn', res.data.result.id)
+          sessionStorage.setItem('adminPermission', String(res.data.result.permission))
+          sessionStorage.setItem('loggedInTime', res.data.result.time)
+
           Object.assign(admin.value, res.data.result)
-          permission.value = res.data.result.permission
           router.push({ name: 'Dashboard' })
         } else if (res.data.code === 10002) {
           // 無効なID
@@ -106,10 +109,12 @@
   const confirm = (): void => {
     if (admin.value.id === 'guest') {
       // ゲストID
-      if (admin.value.passWord === 'guest') {
-        isLoggedIn.value = true
+      if (admin.value.passWord === '*****') {
+        isFirstLogin.value = true
+        sessionStorage.setItem('isLoggedIn', 'guest')
         admin.value.permission = 2
         admin.value.time = dayjs().format('YYYY-MM-DD HH:mm:ss')
+
         router.push({ name: 'Dashboard' })
       } else {
         isInvalidPassWord.value = true
