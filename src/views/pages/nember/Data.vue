@@ -89,6 +89,8 @@
   import { FilterMatchMode } from 'primevue/api'
   import { useConfirm } from 'primevue/useconfirm'
   import useVariables from '../../../hooks/variable'
+  import { storeToRefs } from 'pinia'
+  import { useMainStore } from '../../../store'
   import useNemberApi from '../../../hooks/nemberApi'
   import useHooks from '../../../hooks'
 
@@ -99,6 +101,8 @@
 
   // ----- use hooks -----
   const confirml = useConfirm()
+  const mainStore = useMainStore()
+  const { permission } = storeToRefs(mainStore)
   const { nembersPrototype } = useVariables()
   const { messageToast, missingValue } = useHooks()
   const { getNemberItems, deleteNemberItems, createNemberItems, editNemberItems } = useNemberApi()
@@ -124,6 +128,7 @@
   let mode = ref<string>('create')
   let form = reactive<IUserSchema>(nembersPrototype)
   let nembers = ref<IUserSchema[]>()
+  let guestLimitLength = ref<number>(0)
 
   // 削除ダイアログ
   const deleteDialog = (i: IUserSchema): void => {
@@ -164,13 +169,21 @@
   const confirm = async (e: IUserSchema): Promise<void> => {
     Object.assign(form, e)
     colse()
-    nembers.value =
-      mode.value === 'create' ? await createNemberItems('user', form) : await editNemberItems('user', form)
+    if (permission.value === 2) {
+      nembers.value?.push(e)
+    } else {
+      nembers.value =
+        mode.value === 'create' ? await createNemberItems('user', form) : await editNemberItems('user', form)
+    }
   }
+
+  // ----- ゲストのCRUD -----
+  // const checkCreate = (): void => {}
 
   // ----- lifecycle -----
   onMounted(async (): Promise<void> => {
     // 読み取り
     nembers.value = await getNemberItems('user')
+    guestLimitLength.value = nembers.value.length
   })
 </script>

@@ -57,7 +57,7 @@
   const changeMode = () => {
     isDark.value = !isDark.value
 
-    const themeUrl: string = isDark.value ? '/theme/dark.css' : '/theme/light.css'
+    const themeUrl: string = isDark.value ? '/theme/dark.variables.css' : '/theme/light.variables.css'
     const linkElement = document.getElementById('theme') as HTMLLinkElement
     const cloneLinkElement: HTMLLinkElement = linkElement.cloneNode(true) as HTMLLinkElement
 

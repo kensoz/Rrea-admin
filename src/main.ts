@@ -5,11 +5,10 @@ import { createPinia } from 'pinia'
 
 // ----- css & primeVue css -----
 import './styles/index.scss'
-import.meta.env.MODE === 'development' && import('../public/theme/light.css')
-// import.meta.env.MODE === 'development' && import('../public/theme/dark.css')
-import 'primevue/resources/primevue.min.css'
-import 'primeicons/primeicons.css'
+import './styles/theme.css'
 import 'primeflex/primeflex.css'
+import 'primeicons/primeicons.css'
+import 'primevue/resources/primevue.min.css'
 
 // ----- primeVue components -----
 import PrimeVue from 'primevue/config'

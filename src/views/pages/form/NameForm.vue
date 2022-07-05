@@ -6,7 +6,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message severity="error">Adminしか新規・編集・削除できません</Message>
+      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-list" label="ネームフォーム管理" />
@@ -27,7 +27,7 @@
         <template #header>
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
-              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" disabled />
+              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" @click="permissionDialog()" />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
             </div>
 
@@ -48,8 +48,16 @@
         <Column header="編集・削除">
           <template #body>
             <div class="flex flex-row">
-              <Button icon="pi pi-pencil" class="p-button-outlined p-button-sm p-button-info mr-2" disabled />
-              <Button icon="pi pi-trash" class="p-button-outlined p-button-sm p-button-danger" disabled />
+              <Button
+                icon="pi pi-pencil"
+                class="p-button-outlined p-button-sm p-button-info mr-2"
+                @click="permissionDialog()"
+              />
+              <Button
+                icon="pi pi-trash"
+                class="p-button-outlined p-button-sm p-button-danger"
+                @click="permissionDialog()"
+              />
             </div>
           </template>
         </Column>
@@ -65,12 +73,16 @@
       </DataTable>
     </div>
   </section>
+
+  <!-- ダイアログボックス：権限確認 -->
+  <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
 </template>
 
 <script lang="ts" setup>
   import { ref, defineAsyncComponent, onMounted } from 'vue'
   import type { IFormSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
+  import { useMainStore } from '../../../store'
   import useFormApi from '../../../hooks/formApi'
   import useHooks from '../../../hooks'
 
@@ -79,8 +91,9 @@
   const AppTitle = defineAsyncComponent(() => import('../../../components/AppTitle.vue'))
 
   // ----- use hooks -----
+  const mainStore = useMainStore()
   const { getFormItems } = useFormApi()
-  const { messageToast } = useHooks()
+  const { messageToast, permissionDialog } = useHooks()
 
   // ----- テーブル -----
   // csv作成

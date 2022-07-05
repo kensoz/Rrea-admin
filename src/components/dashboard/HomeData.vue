@@ -28,7 +28,7 @@
   // ----- data -----
   const data: IData[] = [
     { id: 1, text: 'スタック', msg: 'Vue.js + TS', icon: 'pi pi-cog', color: 'text-red-400', link: '/about' },
-    { id: 2, text: 'UIライブラリ', msg: 'primeVue', icon: 'pi pi-prime', color: 'text-blue-400', link: '/about' },
+    { id: 2, text: 'UIライブラリ', msg: 'primeVue', icon: 'pi pi-palette', color: 'text-blue-400', link: '/about' },
     { id: 3, text: '管理レベル', msg: '3', icon: 'pi pi-sliders-h', color: 'text-teal-400', link: '/auth' },
     { id: 4, text: '今日の利用率（％）', msg: '99', icon: 'pi pi-box', color: 'text-purple-400', link: '/analyse' },
   ]

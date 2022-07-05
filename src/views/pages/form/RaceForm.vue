@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message severity="error">Adminしか新規・編集・削除できません</Message>
+      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-users" label="種族フォーム管理" />
@@ -26,7 +26,12 @@
         <template #header>
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
-              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" @click="createDialog()" />
+              <Button
+                label="新規"
+                icon="pi pi-plus"
+                class="p-button-sm mr-2"
+                @click="mainStore.permission === 2 ? permissionDialog() : createDialog()"
+              />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
             </div>
 
@@ -50,12 +55,12 @@
               <Button
                 icon="pi pi-pencil"
                 class="p-button-outlined p-button-sm p-button-info mr-2"
-                @click="editDialog(slotProps.data)"
+                @click="mainStore.permission === 2 ? permissionDialog() : editDialog(slotProps.data)"
               />
               <Button
                 icon="pi pi-trash"
                 class="p-button-outlined p-button-sm p-button-danger"
-                @click="deleteConfirm(slotProps.data)"
+                @click="mainStore.permission === 2 ? permissionDialog() : deleteConfirm(slotProps.data)"
               />
             </div>
           </template>
@@ -74,7 +79,7 @@
 
     <!-- ダイアログボックス：新規作成&編集 -->
     <AppFormDialog :visible="visible" :mode="mode" :form="form" @colse="colse()" @confirm="confirm" />
-    <!-- ダイアログボックス：削除確認 -->
+    <!-- ダイアログボックス：権限確認、削除確認 -->
     <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
   </section>
 </template>
@@ -83,6 +88,7 @@
   import { ref, reactive, defineAsyncComponent, onMounted } from 'vue'
   import type { IFormSchema, IUserSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
+  import { useMainStore } from '../../../store'
   import { useConfirm } from 'primevue/useconfirm'
   import useVariables from '../../../hooks/variable'
   import useFormApi from '../../../hooks/formApi'
@@ -96,8 +102,9 @@
 
   // ----- use hooks -----
   const confirml = useConfirm()
+  const mainStore = useMainStore()
   const { formPrototype } = useVariables()
-  const { messageToast, missingValue } = useHooks()
+  const { messageToast, missingValue, permissionDialog } = useHooks()
   const { getNemberItems } = useNemberApi()
   const { getFormItems, deleteFormItems, createFormItems, editFormItems } = useFormApi()
 

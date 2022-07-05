@@ -5,7 +5,11 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message severity="error">Adminしか新規・編集・削除できません</Message>
+      <Message severity="info">
+        管理者権限を変更したい場合は
+        <span class="underline font-medium"><a href="https://github.com/kensoz">ここ</a></span>
+        までご連絡ください
+      </Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-user-edit" label="管理者設定" />
@@ -50,7 +54,7 @@
               <Button
                 icon="pi pi-pencil"
                 class="p-button-outlined p-button-sm p-button-info mr-2"
-                @click="passWordDialog(slotProps.data)"
+                @click="permission === 0 ? passWordDialog(slotProps.data) : permissionDialog()"
               />
             </div>
           </template>
@@ -72,13 +76,7 @@
         <Column field="permission" header="権限" :sortable="true" />
         <Column field="permission" header="権限説明">
           <template #body="slotProps">
-            {{
-              slotProps.data.permission === 0
-                ? 'マスター：パスワード変更などのすべて'
-                : slotProps.data.permission === 1
-                ? '管理員：DBへのCURD'
-                : 'ゲスト：情報確認'
-            }}
+            {{ permissionDescription(slotProps.data.permission) }}
           </template>
         </Column>
         <Column field="time" header="前回の利用時間" :sortable="true" />
@@ -91,7 +89,7 @@
 
   <!-- ダイアログボックス：パスワード修正 -->
   <AppAdminDialog :visible="visible" :admin-id="newAdminPassWord.id" @colse="colse()" @confirm="confirm" />
-  <!-- ダイアログボックス：ガスト確認 -->
+  <!-- ダイアログボックス：権限確認 -->
   <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
 </template>
 
@@ -99,7 +97,6 @@
   import { ref, reactive, defineAsyncComponent, onMounted } from 'vue'
   import type { ICommonRespon, IAuth, IAuthParam } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
-  import { useConfirm } from 'primevue/useconfirm'
   import { useMainStore } from '../../../store'
   import useHooks from '../../../hooks'
   import { storeToRefs } from 'pinia'
@@ -111,10 +108,9 @@
   const AppTitle = defineAsyncComponent(() => import('../../../components/AppTitle.vue'))
 
   // ----- use hooks -----
-  const confirml = useConfirm()
   const mainStore = useMainStore()
-  const { admin } = storeToRefs(mainStore)
-  const { logout, messageToast, errorToast } = useHooks()
+  const { admin, permission } = storeToRefs(mainStore)
+  const { logout, messageToast, errorToast, permissionDialog } = useHooks()
 
   // ----- テーブル -----
   // フィルタ
@@ -136,7 +132,7 @@
       .get<ICommonRespon<IAuth[]>>('/api/v1/auth')
       .then(res => {
         authArr.value = res.data.result
-        authArr.value.push({ id: admin.value.id, permission: admin.value.permission, time: admin.value.time })
+        authArr.value.push({ id: 'guest', permission: 2, time: admin.value.time })
       })
       .catch((): void => {
         errorToast()
@@ -158,17 +154,14 @@
   }
 
   const passWordDialog = (e: IAuth): void => {
-    if (e.id === 'guest') {
-      confirml.require({
-        message: 'ゲスト用のため、変更できません',
-        header: 'お知らせ',
-        icon: 'pi pi-exclamation-triangle',
-        rejectClass: 'hidden',
-      })
-    } else {
-      newAdminPassWord.id = e.id
-      visible.value = true
-    }
+    newAdminPassWord.id = e.id
+    visible.value = true
+  }
+
+  // 権限の説明テキスト
+  const permissionDescription = (e: number): string => {
+    const arr: string[] = ['マスター：パスワード変更などのすべて', '管理員：DBへのCURD', 'ゲスト：情報確認']
+    return arr[e]
   }
 
   // ----- lifecycle -----

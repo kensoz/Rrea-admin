@@ -1,14 +1,13 @@
 
+/* ##############################
+*
+* primeVue theme Fluent Light
+* https://www.primefaces.org/primevue/theming
+* CSS変数はpublicファイルで定義
+*
+############################## */
 
 /* ########## カスタマイズCSS ########## */
-:root {
-  --ra-layout: #1b1a19;
-  --ra-color: #faf9f8;
-  --ra-bg: #292827;
-  --ra-border: #3b3a39;
-  --ra-hover:  #323130;
-}
-
 .ra-layout {
   background-color: var(--ra-layout);
   color: var(--ra-color);
@@ -33,8 +32,6 @@
   --font-family:'Murecho',sans-serif;
   --surface-0: #ffffff;
   --surface-50: #f3f2f1;
-  --surface-100: #3b3a39;
-  /* --surface-100: #e1dfdd; */
   --surface-200: #bebbb8;
   --surface-300: #a19f9d;
   --surface-400: #797775;
@@ -788,7 +785,7 @@
 }
 
 .p-dropdown-panel {
-  background: var(--ra-bg);
+  background: var(--ra-layout);
   color: var(--ra-color);
   border: 0 none;
   border-radius: 2px;
@@ -2528,7 +2525,7 @@
   font-weight: 600;
 }
 .p-datatable .p-datatable-thead > tr > th {
-  text-align: left;
+  text-align: center;
   padding: 0.75rem 0.75rem;
   border: 1px solid var(--ra-border);
   border-width: 0 0 1px 0;
@@ -3936,12 +3933,10 @@
   border-top-left-radius: 2px;
   transition: box-shadow 0.2s;
 }
-
 .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus {
   outline: 0 none;
   outline-offset: 0;
 }
-
 .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
   background: var(--ra-layout);
   border-color: transparent;
@@ -5132,10 +5127,10 @@
   box-shadow: inset 0 0 0 1px #605e5c;
 }
 .p-message.p-message-info {
-  background: #f3f2f1;
+  background: #dff6dd;
   border: 0 none;
   border-width: 0 0 0 6px;
-  color: var(--ra-color);
+  color: #484644;
 }
 .p-message.p-message-info .p-message-icon {
   color: #605e5c;
@@ -5147,7 +5142,7 @@
   background: #dff6dd;
   border: 0 none;
   border-width: 0 0 0 6px;
-  color: var(--ra-color);
+  color: #484644;
 }
 .p-message.p-message-success .p-message-icon {
   color: #107c10;
@@ -5231,7 +5226,7 @@
   background: #f3f2f1;
   border: 0 none;
   border-width: 0 0 0 6px;
-  color: var(--ra-color);
+  color: #484644;
 }
 .p-toast .p-toast-message.p-toast-message-info .p-toast-message-icon,
 .p-toast .p-toast-message.p-toast-message-info .p-toast-icon-close {
@@ -5747,7 +5742,7 @@
 }
 
 .p-inputtext:disabled {
-  background-color: var(--ra-layout);
+  background-color: #f3f2f1;
   color: #a19f9d;
   opacity: 1;
   user-select: none;
@@ -5775,8 +5770,8 @@
 
 .p-dropdown.p-disabled,
 .p-multiselect.p-disabled {
-  background-color: var(--ra-bg);
-  border-color: var(--ra-color);
+  background-color: #f3f2f1;
+  border-color: #f3f2f1;
   color: #a19f9d;
   opacity: 1;
   user-select: none;

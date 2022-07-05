@@ -72,7 +72,7 @@
   const router = useRouter()
   const { errorToast } = useHooks()
   const mainStore = useMainStore()
-  const { isDark, isLoggedIn, admin } = storeToRefs(mainStore)
+  const { isDark, isLoggedIn, permission, admin } = storeToRefs(mainStore)
 
   // ----- 登録 -----
   let isInvalidID = ref<boolean>(false)
@@ -87,6 +87,7 @@
           // ログイン成功
           isLoggedIn.value = true
           Object.assign(admin.value, res.data.result)
+          permission.value = res.data.result.permission
           router.push({ name: 'Dashboard' })
         } else if (res.data.code === 10002) {
           // 無効なID

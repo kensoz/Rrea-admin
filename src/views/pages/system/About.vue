@@ -43,8 +43,8 @@
           <Button icon="pi pi-github" label="Admin-GitHub（本プロジェクト）" class="p-button-sm p-button-outlined" />
         </div>
         <div>
-          <Button icon="pi pi-github" label="Client-GitHub" class="p-button-sm p-button-outlined mr-2" />
-          <Button icon="pi pi-external-link" label="Client ホームページ" class="p-button-sm p-button-outlined mr-2" />
+          <Button icon="pi pi-github" label="Client-GitHub" class="p-button-sm p-button-outlined mr-1" />
+          <Button icon="pi pi-external-link" label="Client ホームページ" class="p-button-sm p-button-outlined mr-1" />
           <Button icon="pi pi-github" label="Server-GitHub" class="p-button-sm p-button-outlined mt-1 md:mt-0" />
         </div>
 

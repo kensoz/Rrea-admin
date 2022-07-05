@@ -3,6 +3,7 @@
 // common function hooks
 //
 // ####################
+import { useConfirm } from 'primevue/useconfirm'
 import { useToast } from 'primevue/usetoast'
 import { useRouter } from 'vue-router'
 import { useMainStore } from '../store'
@@ -13,6 +14,7 @@ export default function useHooks() {
   // ----- use hooks -----
   const router = useRouter()
   const toast = useToast()
+  const confirml = useConfirm()
   const mainStore = useMainStore()
   const { admin, isLoggedIn } = storeToRefs(mainStore)
 
@@ -110,6 +112,21 @@ export default function useHooks() {
     return numArr.length
   }
 
+  /**
+   *  --- 権限お知らせダイアログ ---
+   *  @param {string} カスタマイズテキスト
+   *  @return {void} なし
+   */
+
+  const permissionDialog = (str?: string): void => {
+    confirml.require({
+      message: str || '権限はありませんヽ(`Д´)ﾉ',
+      header: 'お知らせ',
+      icon: 'pi pi-exclamation-triangle',
+      rejectClass: 'hidden',
+    })
+  }
+
   return {
     link,
     route,
@@ -118,5 +135,6 @@ export default function useHooks() {
     messageToast,
     errorToast,
     missingValue,
+    permissionDialog,
   }
 }
