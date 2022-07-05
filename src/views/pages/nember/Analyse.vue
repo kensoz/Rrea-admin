@@ -66,8 +66,8 @@
   import { ref, defineAsyncComponent } from 'vue'
 
   // ----- AsyncComponent -----
-  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/AppBreadcrumb.vue'))
-  const AppTitle = defineAsyncComponent(() => import('../../../components/AppTitle.vue'))
+  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
+  const AppTitle = defineAsyncComponent(() => import('../../../components/base/AppTitle.vue'))
   const LineChart = defineAsyncComponent(() => import('../../../components/analyse/LineChart.vue'))
   const BarChart = defineAsyncComponent(() => import('../../../components/analyse/BarChart.vue'))
   const PieChart = defineAsyncComponent(() => import('../../../components/analyse/PieChart.vue'))

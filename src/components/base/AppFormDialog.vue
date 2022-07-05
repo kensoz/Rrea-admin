@@ -54,7 +54,7 @@
 
 <script lang="ts" setup>
   import { ref, reactive, defineEmits, defineProps } from 'vue'
-  import type { IFormSchema } from '../types'
+  import type { IFormSchema } from '../../types'
 
   // ----- Props & Custom Events -----
   const props = defineProps<{

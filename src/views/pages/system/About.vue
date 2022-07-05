@@ -14,8 +14,9 @@
         <!-- 私 -->
         <div class="text-xs font-semibold font-italic text-200 pb-3 border-bottom-1 border-100">by RenHou</div>
 
-        <!-- Lisence -->
+        <!-- badge -->
         <div class="mt-2">
+          <Image class="mr-1" :src="coverage" alt="Coverage" />
           <Image :src="mit" alt="Lisence" />
         </div>
 
@@ -66,7 +67,7 @@
   import type { IData } from '../../../types'
 
   // ----- AsyncComponent -----
-  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/AppBreadcrumb.vue'))
+  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
 
   // ----- use hooks -----
   const { link } = useHooks()
@@ -83,6 +84,7 @@
   ]
 
   const mit = 'https://img.shields.io/badge/License-MIT-0284C7.svg?style=flat-square'
+  const coverage = 'https://img.shields.io/badge/Coverage-95%25-84CC16.svg?style=flat-square'
 
   const url = {
     admin: 'https://github.com/kensoz/Rrea-admin',

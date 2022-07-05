@@ -103,9 +103,9 @@
   import axios from 'axios'
 
   // ----- AsyncComponent -----
-  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/AppBreadcrumb.vue'))
-  const AppAdminDialog = defineAsyncComponent(() => import('../../../components/AppAdminDialog.vue'))
-  const AppTitle = defineAsyncComponent(() => import('../../../components/AppTitle.vue'))
+  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
+  const AppAdminDialog = defineAsyncComponent(() => import('../../../components/base/AppAdminDialog.vue'))
+  const AppTitle = defineAsyncComponent(() => import('../../../components/base/AppTitle.vue'))
 
   // ----- use hooks -----
   const mainStore = useMainStore()

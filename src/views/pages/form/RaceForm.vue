@@ -96,9 +96,9 @@
   import useHooks from '../../../hooks'
 
   // ----- AsyncComponent -----
-  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/AppBreadcrumb.vue'))
-  const AppFormDialog = defineAsyncComponent(() => import('../../../components/AppFormDialog.vue'))
-  const AppTitle = defineAsyncComponent(() => import('../../../components/AppTitle.vue'))
+  const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
+  const AppFormDialog = defineAsyncComponent(() => import('../../../components/base/AppFormDialog.vue'))
+  const AppTitle = defineAsyncComponent(() => import('../../../components/base/AppTitle.vue'))
 
   // ----- use hooks -----
   const confirml = useConfirm()
