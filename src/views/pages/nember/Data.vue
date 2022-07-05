@@ -5,7 +5,9 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message severity="error">Adminしか新規・編集・削除できません</Message>
+      <Message v-if="permission === 2" severity="info">
+        ゲストさんはメンバーのCRUDができますが、ローカルのCURDでデータへの反映はしません
+      </Message>
 
       <!-- タイトル -->
       <AppTitle :icon="'pi-id-card'" label="メンバー管理" />
@@ -26,8 +28,9 @@
         <template #header>
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
-              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" @click="createDialog()" />
+              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-1" @click="createDialog()" />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
+              <Button icon="pi pi-replay" class="p-button-success p-button-sm ml-1" @click="reset()" />
             </div>
 
             <div>
@@ -35,7 +38,7 @@
                 <i class="pi pi-search" />
                 <InputText
                   v-model="filters['global'].value"
-                  class="p-inputtext-sm max-w-10rem md:max-w-max"
+                  class="p-inputtext-sm max-w-8rem sm:max-w-10rem md:max-w-max"
                   placeholder="検索"
                 />
               </span>
@@ -118,6 +121,11 @@
   // フィルタ
   const filters = ref({ global: { value: undefined, matchMode: FilterMatchMode.CONTAINS } })
 
+  // リセット
+  const reset = async (): Promise<void> => {
+    nembers.value = await getNemberItems('user')
+  }
+
   // ----- ダイアログボック -----
   let visible = ref<boolean>(false)
   const colse = (): void => {
@@ -126,9 +134,9 @@
 
   // ----- フォームCRUD -----
   let mode = ref<string>('create')
-  let form = reactive<IUserSchema>(nembersPrototype)
   let nembers = ref<IUserSchema[]>()
-  let guestLimitLength = ref<number>(0)
+  let form = reactive<IUserSchema>(nembersPrototype)
+  const resetNembersPrototype: IUserSchema = JSON.parse(JSON.stringify(nembersPrototype))
 
   // 削除ダイアログ
   const deleteDialog = (i: IUserSchema): void => {
@@ -138,7 +146,12 @@
       icon: 'pi pi-exclamation-triangle',
       rejectClass: 'p-button-outlined p-button-warning',
       accept: async (): Promise<void> => {
-        nembers.value = await deleteNemberItems('user', i.id)
+        // 削除前に権限チェック
+        if (permission.value === 2) {
+          guestEditorDelete('deldete', i)
+        } else {
+          nembers.value = await deleteNemberItems('user', i.id)
+        }
       },
     })
   }
@@ -153,7 +166,7 @@
       idArr.push(Number(i.id))
     })
     const valueNum: number = missingValue(idArr)
-    Object.assign(form, nembersPrototype, { id: ('00000' + valueNum.toString()).slice(-5) })
+    Object.assign(form, resetNembersPrototype, { id: ('00000' + valueNum.toString()).slice(-5) })
 
     visible.value = true
   }
@@ -169,21 +182,30 @@
   const confirm = async (e: IUserSchema): Promise<void> => {
     Object.assign(form, e)
     colse()
+
+    // 作成&編集前に先に権限チェック
     if (permission.value === 2) {
-      nembers.value?.push(e)
+      mode.value === 'create' ? nembers.value?.push(e) : guestEditorDelete('edit', e)
     } else {
       nembers.value =
         mode.value === 'create' ? await createNemberItems('user', form) : await editNemberItems('user', form)
     }
   }
 
-  // ----- ゲストのCRUD -----
-  // const checkCreate = (): void => {}
+  // ----- ゲストの編集と削除 -----
+  const guestEditorDelete = (mode: 'edit' | 'deldete', user: IUserSchema): void => {
+    if (mode === 'edit') {
+      nembers.value?.map((i: IUserSchema): void => {
+        i.id === user.id && Object.assign(i, user)
+      })
+    } else {
+      nembers.value = nembers.value?.filter((i: IUserSchema): boolean => i.id !== user.id)
+    }
+  }
 
   // ----- lifecycle -----
   onMounted(async (): Promise<void> => {
     // 読み取り
     nembers.value = await getNemberItems('user')
-    guestLimitLength.value = nembers.value.length
   })
 </script>

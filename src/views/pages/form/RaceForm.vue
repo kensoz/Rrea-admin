@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんのCRUDができません</Message>
+      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-users" label="種族フォーム管理" />
@@ -29,7 +29,7 @@
               <Button
                 label="新規"
                 icon="pi pi-plus"
-                class="p-button-sm mr-2"
+                class="p-button-sm mr-1"
                 @click="mainStore.permission === 2 ? permissionDialog() : createDialog()"
               />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
@@ -127,8 +127,8 @@
 
   // ----- フォームCRUD -----
   let mode = ref<string>('create')
-  let form = reactive<IFormSchema>(formPrototype)
   let raceForm = ref<IFormSchema[]>()
+  let form = reactive<IFormSchema>(formPrototype)
 
   // 削除したい種族は使っているかどうかをチェック
   const deleteConfirm = async (race: IFormSchema): Promise<void> => {

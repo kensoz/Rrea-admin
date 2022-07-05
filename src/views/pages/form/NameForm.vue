@@ -6,7 +6,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんのCRUDができません</Message>
+      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-list" label="ネームフォーム管理" />
@@ -27,7 +27,7 @@
         <template #header>
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
-              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" @click="permissionDialog()" />
+              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-1" @click="permissionDialog()" />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
             </div>
 

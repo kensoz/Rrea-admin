@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんのCRUDができません</Message>
+      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-briefcase" label="職務フォーム管理" />
@@ -29,7 +29,7 @@
               <Button
                 label="新規"
                 icon="pi pi-plus"
-                class="p-button-sm mr-2"
+                class="p-button-sm mr-1"
                 @click="mainStore.permission === 2 ? permissionDialog() : createDialog()"
               />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />

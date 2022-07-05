@@ -26,7 +26,7 @@
         <template #header>
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
-              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-2" disabled />
+              <Button label="新規" icon="pi pi-plus" class="p-button-sm mr-1" disabled />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
             </div>
 
