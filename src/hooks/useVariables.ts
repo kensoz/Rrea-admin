@@ -3,7 +3,7 @@
 // variables hooks
 //
 // ####################
-import type { IFormSchema, IUserSchema, IPieChartData } from '../types'
+import type { IFormSchema, IUserSchema, IPieChartData, IAuth } from '../types'
 
 export default function useVariables() {
   // formデフォルト
@@ -49,5 +49,13 @@ export default function useVariables() {
     reject: '取消',
   }
 
-  return { formPrototype, nembersPrototype, piePrototype, locale }
+  // 管理者デフォルト（ゲスト）
+  const adminPrototype: IAuth = {
+    id: 'guest',
+    passWord: 'guest',
+    permission: 2,
+    time: '2022-09-05',
+  }
+
+  return { formPrototype, nembersPrototype, piePrototype, locale, adminPrototype }
 }

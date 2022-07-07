@@ -54,7 +54,7 @@
               <Button
                 icon="pi pi-pencil"
                 class="p-button-outlined p-button-sm p-button-info mr-2"
-                @click="permission === 0 ? passWordDialog(slotProps.data) : permissionDialog()"
+                @click="admin.permission === 0 ? passWordDialog(slotProps.data) : permissionDialog()"
               />
             </div>
           </template>
@@ -89,8 +89,6 @@
 
   <!-- ダイアログボックス：パスワード修正 -->
   <AppAdminDialog :visible="visible" :admin-id="newAdminPassWord.id" @colse="colse()" @confirm="confirm" />
-  <!-- ダイアログボックス：権限確認 -->
-  <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
 </template>
 
 <script lang="ts" setup>
@@ -98,7 +96,7 @@
   import type { ICommonRespon, IAuth, IAuthParam } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
   import { useMainStore } from '../../../store'
-  import useHooks from '../../../hooks'
+  import useHooks from '../../../hooks/useHooks'
   import { storeToRefs } from 'pinia'
   import axios from 'axios'
 
@@ -109,7 +107,7 @@
 
   // ----- use hooks -----
   const mainStore = useMainStore()
-  const { admin, permission } = storeToRefs(mainStore)
+  const { admin } = storeToRefs(mainStore)
   const { logout, messageToast, errorToast, permissionDialog } = useHooks()
 
   // ----- テーブル -----
@@ -132,7 +130,6 @@
       .get<ICommonRespon<IAuth[]>>('/api/v1/auth')
       .then(res => {
         authArr.value = res.data.result
-        authArr.value.push({ id: 'guest', permission: 2, time: admin.value.time })
       })
       .catch((): void => {
         errorToast()

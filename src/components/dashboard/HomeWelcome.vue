@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-  import useHooks from '../../hooks'
+  import useHooks from '../../hooks/useHooks'
   import { useMainStore } from '../../store'
   import { storeToRefs } from 'pinia'
 

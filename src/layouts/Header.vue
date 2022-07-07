@@ -46,7 +46,7 @@
   import { ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../store'
-  import useHooks from '../hooks'
+  import useHooks from '../hooks/useHooks'
 
   // ----- use hooks -----
   const mainStore = useMainStore()

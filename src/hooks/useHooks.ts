@@ -8,7 +8,8 @@ import { useToast } from 'primevue/usetoast'
 import { useRouter } from 'vue-router'
 import { useMainStore } from '../store'
 import { storeToRefs } from 'pinia'
-import axios from 'axios'
+import useStorage from './useStorage'
+import axios, { AxiosError } from 'axios'
 
 export default function useHooks() {
   // ----- use hooks -----
@@ -17,11 +18,12 @@ export default function useHooks() {
   const confirml = useConfirm()
   const mainStore = useMainStore()
   const { admin } = storeToRefs(mainStore)
+  const { clearLogoutStorage } = useStorage()
 
   // ----- Functions -----
 
   /**
-   *  --- ログアウト ---
+   *  --- メンバー場所の背景色 ---
    *  @param {number} areaCode 場所のコード
    *  @return {string} 色の文字列
    */
@@ -41,14 +43,8 @@ export default function useHooks() {
     await axios
       .delete(`/api/v1/auth/${admin.value.id}`)
       .then((): void => {
-        sessionStorage.clear()
-        Object.assign(admin.value, {
-          id: 'guest',
-          passWord: '*****',
-          permission: 2,
-        })
-
         router.push({ name: 'Login' })
+        clearLogoutStorage()
       })
       .catch((): void => {
         toast.add({ severity: 'error', summary: 'ERROR', detail: 'ログアウト失敗しました', life: 3000 })
@@ -76,7 +72,7 @@ export default function useHooks() {
   }
 
   /**
-   *  --- メッセージ処理 ---
+   *  --- メッセージ提示処理 ---
    *  @param {string} text メッセージ（省略可）
    *  @return {void} なし
    */
@@ -86,7 +82,7 @@ export default function useHooks() {
   }
 
   /**
-   *  --- エラー処理 ---
+   *  --- エラー提示処理 ---
    *  @param {string} text エラー（省略可）
    *  @return {void} なし
    */
@@ -127,10 +123,33 @@ export default function useHooks() {
     })
   }
 
+  /**
+   *  --- エラー処理（現時点では、jwtが必要なリクエストのみ） ---
+   *  @param {AxiosError} err axiosエラー
+   *  @return {void} なし
+   */
+
+  const errorHandle = (err: AxiosError): void => {
+    // JWT認証失敗
+    if (err.response?.status === 401) {
+      confirml.require({
+        message: 'JWT認証失敗しました、再ログインしてください',
+        header: 'お知らせ',
+        icon: 'pi pi-exclamation-triangle',
+        rejectClass: 'hidden',
+        accept: () => logout(),
+      })
+    } else {
+      // その他のエラー
+      errorToast()
+    }
+  }
+
   return {
     link,
     route,
     logout,
+    errorHandle,
     bgColorCreator,
     messageToast,
     errorToast,

@@ -6,7 +6,7 @@
 // ------------------------------
 
 import { Router, createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { useMainStore } from '../store'
+import { ADMIN_TOKEN } from '../store/type'
 
 // routes
 const routes: Array<RouteRecordRaw> = [
@@ -94,7 +94,7 @@ const router: Router = createRouter({
 
 // Navigation Guards
 router.beforeEach((to, from, next): void => {
-  if (!sessionStorage.getItem('isLoggedIn') && to.name !== 'Login') {
+  if (!sessionStorage.getItem(ADMIN_TOKEN) && to.name !== 'Login') {
     next({ name: 'Login' })
   } else {
     next()

@@ -70,8 +70,8 @@
   import { ref, defineAsyncComponent, onMounted } from 'vue'
   import type { IFormSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
-  import useFormApi from '../../../hooks/formApi'
-  import useHooks from '../../../hooks'
+  import useFormApi from '../../../hooks/useFormApi'
+  import useHooks from '../../../hooks/useHooks'
 
   // ----- AsyncComponent -----
   const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))

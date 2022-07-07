@@ -61,7 +61,7 @@
 
 <script lang="ts" setup>
   import { defineAsyncComponent } from 'vue'
-  import useHooks from '../../../hooks'
+  import useHooks from '../../../hooks/useHooks'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../../../store'
   import type { IData } from '../../../types'

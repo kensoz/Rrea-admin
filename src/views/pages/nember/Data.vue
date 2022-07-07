@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="permission === 2" severity="info">
+      <Message v-if="admin.permission === 2" severity="info">
         ゲストさんはメンバーのCRUDができますが、ローカルのCURDでデータへの反映はしません
       </Message>
 
@@ -81,8 +81,6 @@
 
     <!-- ダイアログボックス：新規作成&編集 -->
     <AppNemberDialog :visible="visible" :mode="mode" :form="form" @colse="colse()" @confirm="confirm" />
-    <!-- ダイアログボックス：削除確認 -->
-    <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
   </section>
 </template>
 
@@ -91,11 +89,11 @@
   import type { IUserSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
   import { useConfirm } from 'primevue/useconfirm'
-  import useVariables from '../../../hooks/variable'
+  import useVariables from '../../../hooks/useVariables'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../../../store'
-  import useNemberApi from '../../../hooks/nemberApi'
-  import useHooks from '../../../hooks'
+  import useNemberApi from '../../../hooks/useNemberApi'
+  import useHooks from '../../../hooks/useHooks'
 
   // ----- AsyncComponent -----
   const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
@@ -105,7 +103,7 @@
   // ----- use hooks -----
   const confirml = useConfirm()
   const mainStore = useMainStore()
-  const { permission } = storeToRefs(mainStore)
+  const { admin } = storeToRefs(mainStore)
   const { nembersPrototype } = useVariables()
   const { messageToast, missingValue } = useHooks()
   const { getNemberItems, deleteNemberItems, createNemberItems, editNemberItems } = useNemberApi()
@@ -147,7 +145,7 @@
       rejectClass: 'p-button-outlined p-button-warning',
       accept: async (): Promise<void> => {
         // 削除前に権限チェック
-        if (permission.value === 2) {
+        if (admin.value.permission === 2) {
           guestEditorDelete('deldete', i)
         } else {
           nembers.value = await deleteNemberItems('user', i.id)
@@ -184,7 +182,7 @@
     colse()
 
     // 作成&編集前に先に権限チェック
-    if (permission.value === 2) {
+    if (admin.value.permission === 2) {
       mode.value === 'create' ? nembers.value?.push(e) : guestEditorDelete('edit', e)
     } else {
       nembers.value =

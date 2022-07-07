@@ -57,7 +57,7 @@
 <script lang="ts" setup>
   import { ref, reactive, onMounted, Ref } from 'vue'
   import type { IPieChartData, IPieChartDataSets } from '../../types'
-  import useVariables from '../../hooks/variable'
+  import useVariables from '../../hooks/useVariables'
   import Chart from 'primevue/chart'
   import dayjs from 'dayjs'
 

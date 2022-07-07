@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-  import useHooks from '../../hooks'
+  import useHooks from '../../hooks/useHooks'
   import type { IData } from '../../types'
 
   // ----- use hooks -----

@@ -144,10 +144,10 @@
 
 <script lang="ts" setup>
   import { ref, reactive, defineEmits, defineProps, onMounted } from 'vue'
-  import type { ICommonRespon, IUserSchema, IFormData, IFormSchema } from '../../types'
+  import type { IUserSchema, IFormData, IFormSchema } from '../../types'
   import { FileUploadRemoveEvent } from 'primevue/fileupload'
-  import useFormApi from '../../hooks/formApi'
-  import useHooks from '../../hooks'
+  import useFormApi from '../../hooks/useFormApi'
+  import useHooks from '../../hooks/useHooks'
 
   // ----- use hooks -----
   const { errorToast } = useHooks()

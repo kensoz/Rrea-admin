@@ -42,7 +42,7 @@
 
 <script lang="ts" setup>
   import { ref, defineAsyncComponent } from 'vue'
-  import useHooks from '../../hooks'
+  import useHooks from '../../hooks/useHooks'
 
   // ----- AsyncComponent -----
   const HomeWelcome = defineAsyncComponent(() => import('../../components/dashboard/HomeWelcome.vue'))

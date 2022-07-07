@@ -29,7 +29,7 @@
   const data: IData[] = [
     { id: 1, text: 'スタック', msg: 'Vue.js3 + TS', icon: 'pi pi-cog', color: 'text-red-400', link: '/about' },
     { id: 2, text: 'UIライブラリ', msg: 'primeVue', icon: 'pi pi-palette', color: 'text-blue-400', link: '/about' },
-    { id: 3, text: '管理権限レベル', msg: '3種類', icon: 'pi pi-sliders-h', color: 'text-teal-400', link: '/auth' },
+    { id: 3, text: '権限レベル', msg: '3種類 + JWT', icon: 'pi pi-sliders-h', color: 'text-teal-400', link: '/auth' },
     { id: 4, text: 'テストカバレッジ', msg: '99％', icon: 'pi pi-box', color: 'text-purple-400', link: '/about' },
   ]
 </script>

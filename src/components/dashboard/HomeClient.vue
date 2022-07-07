@@ -103,7 +103,7 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue'
   import type { ICommonRespon, IDataCounts, IDataSchema, IDataBodyRespon } from '../../types'
-  import useHooks from '../../hooks'
+  import useHooks from '../../hooks/useHooks'
   import axios from 'axios'
 
   // ----- use hooks -----

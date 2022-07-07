@@ -4037,14 +4037,7 @@
   font-size: 1.5rem;
 }
 .p-dialog .p-dialog-header .p-dialog-header-icon {
-  width: 2rem;
-  height: 2rem;
-  color: #605e5c;
-  border: 0 none;
-  background: transparent;
-  border-radius: 2px;
-  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
-  margin-right: 0.5rem;
+  display:none;
 }
 .p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover {
   color: #605e5c;

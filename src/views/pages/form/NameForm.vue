@@ -6,7 +6,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
+      <Message v-if="admin.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-list" label="ネームフォーム管理" />
@@ -73,18 +73,16 @@
       </DataTable>
     </div>
   </section>
-
-  <!-- ダイアログボックス：権限確認 -->
-  <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
 </template>
 
 <script lang="ts" setup>
   import { ref, defineAsyncComponent, onMounted } from 'vue'
   import type { IFormSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
+  import useFormApi from '../../../hooks/useFormApi'
+  import useHooks from '../../../hooks/useHooks'
   import { useMainStore } from '../../../store'
-  import useFormApi from '../../../hooks/formApi'
-  import useHooks from '../../../hooks'
+  import { storeToRefs } from 'pinia'
 
   // ----- AsyncComponent -----
   const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
@@ -92,6 +90,7 @@
 
   // ----- use hooks -----
   const mainStore = useMainStore()
+  const { admin } = storeToRefs(mainStore)
   const { getFormItems } = useFormApi()
   const { messageToast, permissionDialog } = useHooks()
 

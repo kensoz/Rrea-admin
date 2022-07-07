@@ -3,13 +3,13 @@
 // common form api hooks
 //
 // ####################
-import axios from 'axios'
-import useHooks from './index'
+import useHooks from './useHooks'
+import axios, { AxiosError } from 'axios'
 import type { ICommonRespon, IFormSchema } from '../types'
 
 export default function useFormApi() {
   // ----- use hooks -----
-  const { messageToast, errorToast } = useHooks()
+  const { messageToast, errorHandle } = useHooks()
 
   // ----- フォームCRUD API -----
   /**
@@ -26,8 +26,8 @@ export default function useFormApi() {
       .then(res => {
         data = res.data.result
       })
-      .catch((): void => {
-        errorToast()
+      .catch((err: AxiosError): void => {
+        errorHandle(err)
       })
 
     return data
@@ -46,8 +46,8 @@ export default function useFormApi() {
       .then(res => {
         messageToast(res.data.message)
       })
-      .catch((): void => {
-        errorToast()
+      .catch((err: AxiosError): void => {
+        errorHandle(err)
       })
 
     return getFormItems(url)
@@ -66,8 +66,8 @@ export default function useFormApi() {
       .then(res => {
         messageToast(res.data.message)
       })
-      .catch((): void => {
-        errorToast()
+      .catch((err: AxiosError): void => {
+        errorHandle(err)
       })
 
     return getFormItems(url)
@@ -86,8 +86,8 @@ export default function useFormApi() {
       .then(res => {
         messageToast(res.data.message)
       })
-      .catch((): void => {
-        errorToast()
+      .catch((err: AxiosError): void => {
+        errorHandle(err)
       })
 
     return getFormItems(url)

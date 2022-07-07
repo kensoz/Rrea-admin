@@ -35,6 +35,8 @@
 
     <!-- サイトトースト -->
     <Toast />
+    <!-- サイトダイアログボックス -->
+    <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
   </div>
 </template>
 
@@ -43,7 +45,7 @@
   import { RouterView } from 'vue-router'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../store'
-  import useHooks from '../hooks'
+  import useHooks from '../hooks/useHooks'
 
   // ----- AsyncComponent -----
   const Header = defineAsyncComponent(() => import('../layouts/Header.vue'))

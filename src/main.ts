@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import setAxios from './api'
 import router from './router'
 import { createPinia } from 'pinia'
 
@@ -37,7 +38,7 @@ import ToastService from 'primevue/toastservice'
 import ConfirmationService from 'primevue/confirmationservice'
 
 // ----- use hooks -----
-import useVariables from './hooks/variable'
+import useVariables from './hooks/useVariables'
 const { locale } = useVariables()
 
 // ----- create app -----
@@ -72,5 +73,8 @@ app.component('DataTable', DataTable)
 app.component('ColumnGroup', ColumnGroup)
 app.component('Toast', Toast)
 app.component('ConfirmDialog', ConfirmDialog)
+
+// ----- set axios interceptors -----
+setAxios()
 
 app.mount('#app')

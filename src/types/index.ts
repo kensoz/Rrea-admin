@@ -17,6 +17,7 @@ export interface IAuth {
   passWord?: string
   permission: number
   time: string
+  token?: string
 }
 
 // login

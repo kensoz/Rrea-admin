@@ -33,20 +33,40 @@
           </div>
 
           <small :class="{ 'p-error': isInvalidPassWord }">
-            {{ isInvalidPassWord ? '無効なパスワード' : 'パスワードを入力してください' }}
+            {{ isInvalidPassWord ? '無効なパスワード' : 'パスワードを入力してください（guest）' }}
           </small>
         </div>
 
         <!-- ログインボタン -->
-        <div class="mx-4 mb-5">
+        <div class="mx-4 mb-4">
           <Button
             label="ログイン"
             class="p-button-sm w-full"
             :disabled="admin.passWord === '' || admin.id === ''"
             @click="confirm()"
           />
+        </div>
 
-          <small class="mt-2">ゲストはこのままログインしてください</small>
+        <!-- インフォメーション -->
+        <div class="flex flex-column px-4 pb-5 pt-2 border-top-1 border-100">
+          <div>
+            <span class="mr-2 text-primary"><i class="pi pi-lock-open" style="font-size: 0.5rem" /></span>
+            <small class="font-medium">ゲストはこのままログインしてください</small>
+          </div>
+
+          <div>
+            <span class="mr-2 text-primary"><i class="pi pi-clock" style="font-size: 0.5rem" /></span>
+            <small>sessionStorageで登録情報を保存します</small>
+          </div>
+
+          <div>
+            <span class="mr-2 text-orange-400"><i class="pi pi-question-circle" style="font-size: 0.5rem" /></span>
+            <small>
+              ログイン問題？
+              <span class="underline font-medium"><a href="https://github.com/kensoz">ここ</a></span>
+              までご連絡ください
+            </small>
+          </div>
         </div>
       </div>
     </div>
@@ -57,22 +77,21 @@
 
 <script setup lang="ts">
   import { ref, defineAsyncComponent } from 'vue'
-  import { useRouter } from 'vue-router'
   import type { ICommonRespon, IAuth, IAuthParam } from '../../types'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../../store'
-  import useHooks from '../../hooks'
-  import dayjs from 'dayjs'
+  import useStorage from '../../hooks/useStorage'
+  import useHooks from '../../hooks/useHooks'
   import axios from 'axios'
 
   // ----- AsyncComponent -----
   const Footer = defineAsyncComponent(() => import('../../layouts/Footer.vue'))
 
   // ----- use hooks -----
-  const router = useRouter()
   const { errorToast } = useHooks()
   const mainStore = useMainStore()
-  const { isDark, isFirstLogin, admin } = storeToRefs(mainStore)
+  const { isDark, admin } = storeToRefs(mainStore)
+  const { saveLoginStorage } = useStorage()
 
   // ----- 登録 -----
   let isInvalidID = ref<boolean>(false)
@@ -85,13 +104,7 @@
       .then((res): void => {
         if (res.data.code === 10001) {
           // ログイン成功
-          isFirstLogin.value = true
-          sessionStorage.setItem('isLoggedIn', res.data.result.id)
-          sessionStorage.setItem('adminPermission', String(res.data.result.permission))
-          sessionStorage.setItem('loggedInTime', res.data.result.time)
-
-          Object.assign(admin.value, res.data.result)
-          router.push({ name: 'Dashboard' })
+          saveLoginStorage(res.data.result)
         } else if (res.data.code === 10002) {
           // 無効なID
           isInvalidID.value = true
@@ -107,23 +120,12 @@
 
   // ログイン処理
   const confirm = (): void => {
-    if (admin.value.id === 'guest') {
-      // ゲストID
-      if (admin.value.passWord === '*****') {
-        isFirstLogin.value = true
-        sessionStorage.setItem('isLoggedIn', 'guest')
-        admin.value.permission = 2
-        admin.value.time = dayjs().format('YYYY-MM-DD HH:mm:ss')
-
-        router.push({ name: 'Dashboard' })
-      } else {
-        isInvalidPassWord.value = true
-      }
-    } else if (admin.value.id === 'admin' || admin.value.id === 'master') {
+    if (admin.value.id === 'admin' || admin.value.id === 'master' || admin.value.id === 'guest') {
       // 管理者ID
       if (admin.value.passWord !== '' && admin.value.passWord !== undefined) {
         login({ id: admin.value.id, passWord: admin.value.passWord })
       } else {
+        // 無効なパスワード
         isInvalidPassWord.value = true
       }
     } else {

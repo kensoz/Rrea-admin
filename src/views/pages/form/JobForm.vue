@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="mainStore.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
+      <Message v-if="admin.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-briefcase" label="職務フォーム管理" />
@@ -30,7 +30,7 @@
                 label="新規"
                 icon="pi pi-plus"
                 class="p-button-sm mr-1"
-                @click="mainStore.permission === 2 ? permissionDialog() : createDialog()"
+                @click="admin.permission === 2 ? permissionDialog() : createDialog()"
               />
               <Button label="CSV" icon="pi pi-upload" class="p-button-secondary p-button-sm" @click="exportCSV()" />
             </div>
@@ -55,12 +55,12 @@
               <Button
                 icon="pi pi-pencil"
                 class="p-button-outlined p-button-sm p-button-info mr-2"
-                @click="mainStore.permission === 2 ? permissionDialog() : editDialog(slotProps.data)"
+                @click="admin.permission === 2 ? permissionDialog() : editDialog(slotProps.data)"
               />
               <Button
                 icon="pi pi-trash"
                 class="p-button-outlined p-button-sm p-button-danger"
-                @click="mainStore.permission === 2 ? permissionDialog() : deleteConfirm(slotProps.data)"
+                @click="admin.permission === 2 ? permissionDialog() : deleteConfirm(slotProps.data)"
               />
             </div>
           </template>
@@ -79,8 +79,6 @@
 
     <!-- ダイアログボックス：新規作成&編集 -->
     <AppFormDialog :visible="visible" :mode="mode" :form="form" @colse="colse()" @confirm="confirm" />
-    <!-- ダイアログボックス：権限確認、削除確認 -->
-    <ConfirmDialog :breakpoints="{ '960px': '75vw', '640px': '90vw' }" />
   </section>
 </template>
 
@@ -88,12 +86,13 @@
   import { ref, reactive, defineAsyncComponent, onMounted } from 'vue'
   import type { IFormSchema, IUserSchema } from '../../../types'
   import { FilterMatchMode } from 'primevue/api'
-  import { useMainStore } from '../../../store'
   import { useConfirm } from 'primevue/useconfirm'
-  import useVariables from '../../../hooks/variable'
-  import useFormApi from '../../../hooks/formApi'
-  import useNemberApi from '../../../hooks/nemberApi'
-  import useHooks from '../../../hooks'
+  import useVariables from '../../../hooks/useVariables'
+  import useFormApi from '../../../hooks/useFormApi'
+  import useNemberApi from '../../../hooks/useNemberApi'
+  import useHooks from '../../../hooks/useHooks'
+  import { useMainStore } from '../../../store'
+  import { storeToRefs } from 'pinia'
 
   // ----- AsyncComponent -----
   const AppBreadcrumb = defineAsyncComponent(() => import('../../../components/base/AppBreadcrumb.vue'))
@@ -103,6 +102,7 @@
   // ----- use hooks -----
   const confirml = useConfirm()
   const mainStore = useMainStore()
+  const { admin } = storeToRefs(mainStore)
   const { formPrototype } = useVariables()
   const { messageToast, missingValue, permissionDialog } = useHooks()
   const { getNemberItems } = useNemberApi()
