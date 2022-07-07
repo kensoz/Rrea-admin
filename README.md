@@ -12,9 +12,11 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 
 ##### メイン機能
 
-+ 管理者認証と管理システム
++ ユーザー認証&権限システム、JWT認証、パスワード暗号化
 + レスポンシブ対応
++ ダークモード、テーマシステム
 + データのCRUD
++ Jestによる自動テスト、PurgeCSSによる使っていない CSS を削除
 
 
 
@@ -22,7 +24,7 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 
 + ⚡️ Vue.js 3 (Composition API)
 + ⚙️ TypeScript
-+ 🎨 PrimeVue
++ 🎨 PrimeVue  + SASS
 + 📑 Eslint + Prettier
 + 🏭 Vite
 + 📦 Yarn
@@ -54,6 +56,7 @@ yarn build
 
 
 
-## 仕様
+## 資料
 
-TODO
++ [エラーコード対照表](https://github.com/kensoz/Rrea-server/blob/master/docs/error.md)
++ [仕様書](https://github.com/kensoz/Rrea-server/blob/master/docs/specification.md)
