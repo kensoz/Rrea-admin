@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message severity="warn">センサーで自動更新しますので、閲覧のみです</Message>
+      <Message severity="warn">センサーでエリアを自動更新しますので、閲覧のみです</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-map-marker" label="エリアフォーム管理" />

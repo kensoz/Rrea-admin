@@ -5,11 +5,13 @@
 // ####################
 import { useConfirm } from 'primevue/useconfirm'
 import { useToast } from 'primevue/usetoast'
+import axios, { AxiosError } from 'axios'
 import { useRouter } from 'vue-router'
 import { useMainStore } from '../store'
 import { storeToRefs } from 'pinia'
 import useStorage from './useStorage'
-import axios, { AxiosError } from 'axios'
+import CryptoJS from 'crypto-js'
+import { PASSWORD_KEY, PASSWORD_IV } from '../store/type'
 
 export default function useHooks() {
   // ----- use hooks -----
@@ -124,6 +126,20 @@ export default function useHooks() {
   }
 
   /**
+   *  --- パスワード暗号化 ---
+   *  @param {string} パスワード
+   *  @return {void} なし
+   */
+
+  const encrypt = (word: string) => {
+    const key = CryptoJS.enc.Utf8.parse(PASSWORD_KEY)
+    const iv = CryptoJS.enc.Utf8.parse(PASSWORD_IV)
+    const srcs = CryptoJS.enc.Utf8.parse(word)
+    const encrypted = CryptoJS.AES.encrypt(srcs, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 })
+    return encrypted.ciphertext.toString().toUpperCase()
+  }
+
+  /**
    *  --- エラー処理（現時点では、jwtが必要なリクエストのみ） ---
    *  @param {AxiosError} err axiosエラー
    *  @return {void} なし
@@ -155,5 +171,6 @@ export default function useHooks() {
     errorToast,
     missingValue,
     permissionDialog,
+    encrypt,
   }
 }

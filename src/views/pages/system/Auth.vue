@@ -108,7 +108,7 @@
   // ----- use hooks -----
   const mainStore = useMainStore()
   const { admin } = storeToRefs(mainStore)
-  const { logout, messageToast, errorToast, permissionDialog } = useHooks()
+  const { logout, messageToast, errorToast, permissionDialog, encrypt } = useHooks()
 
   // ----- テーブル -----
   // フィルタ
@@ -140,8 +140,9 @@
   const confirm = async (pw: string): Promise<void> => {
     colse()
 
+    const password: string = await encrypt(pw)
     await axios
-      .patch<ICommonRespon>(`/api/v1/auth/${newAdminPassWord.id}`, { passWord: pw })
+      .patch<ICommonRespon>(`/api/v1/auth/${newAdminPassWord.id}`, { passWord: password })
       .then((res): void => {
         messageToast(res.data.message)
       })

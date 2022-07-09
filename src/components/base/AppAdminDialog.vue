@@ -75,6 +75,8 @@
     confirm: '',
   })
 
+  console.log(passWord)
+
   // 送信前にチェック
   let isBlank = ref<boolean>(false)
   let isDuplicate = ref<boolean>(false)
@@ -89,6 +91,8 @@
       isDuplicate.value = true
     } else {
       await emit('confirm', passWord.first)
+      passWord.first = ''
+      passWord.confirm = ''
     }
   }
 </script>

@@ -78,19 +78,17 @@
 <script setup lang="ts">
   import { ref, defineAsyncComponent } from 'vue'
   import type { ICommonRespon, IAuth, IAuthParam } from '../../types'
-  import { PASSWORD_KEY, PASSWORD_IV } from '../../store/type'
   import { storeToRefs } from 'pinia'
   import { useMainStore } from '../../store'
   import useStorage from '../../hooks/useStorage'
   import useHooks from '../../hooks/useHooks'
-  import CryptoJS from 'crypto-js'
   import axios from 'axios'
 
   // ----- AsyncComponent -----
   const Footer = defineAsyncComponent(() => import('../../layouts/Footer.vue'))
 
   // ----- use hooks -----
-  const { errorToast } = useHooks()
+  const { errorToast, encrypt } = useHooks()
   const mainStore = useMainStore()
   const { isDark, admin } = storeToRefs(mainStore)
   const { saveLoginStorage } = useStorage()
@@ -98,15 +96,6 @@
   // ----- 登録 -----
   let isInvalidID = ref<boolean>(false)
   let isInvalidPassWord = ref<boolean>(false)
-
-  // パスワード暗号化
-  const encrypt = (word: string) => {
-    const key = CryptoJS.enc.Utf8.parse(PASSWORD_KEY)
-    const iv = CryptoJS.enc.Utf8.parse(PASSWORD_IV)
-    const srcs = CryptoJS.enc.Utf8.parse(word)
-    const encrypted = CryptoJS.AES.encrypt(srcs, key, { iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 })
-    return encrypted.ciphertext.toString().toUpperCase()
-  }
 
   // ID&パスワード認証
   const login = async (param: IAuthParam): Promise<void> => {

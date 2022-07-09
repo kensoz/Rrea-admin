@@ -5,7 +5,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="admin.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
+      <Message v-if="admin.permission === 2" severity="error">ゲストさんは職務フォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-briefcase" label="職務フォーム管理" />

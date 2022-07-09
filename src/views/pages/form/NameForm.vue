@@ -6,7 +6,7 @@
     <!-- コンテンツ -->
     <div class="my-contents">
       <!-- メッセージ -->
-      <Message v-if="admin.permission === 2" severity="error">ゲストさんはフォームのCRUDができません</Message>
+      <Message v-if="admin.permission === 2" severity="error">ゲストさんはネームフォームのCRUDができません</Message>
 
       <!-- タイトル -->
       <AppTitle icon="pi-list" label="ネームフォーム管理" />
