@@ -14,5 +14,5 @@
 
 <script setup lang="ts">
   import { RouterView } from 'vue-router'
-  import.meta.env.MODE === 'development' ? console.log('dev standing 🚀') : console.log('こんにちは！🙈')
+  import.meta.env.MODE === 'development' ? console.log('Rrea-Admin Dev 🚀') : console.log('Rrea-Adminへようこそ！🤣')
 </script>
