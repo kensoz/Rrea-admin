@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite --port 3001",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "pinia": "^2.0.14",
@@ -22,12 +24,15 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/eslint-config-prettier": "^7.0.0",
     "@vue/eslint-config-typescript": "^10.0.0",
+    "@vue/test-utils": "^2.0.2",
     "axios": "^0.27.2",
+    "c8": "^7.11.3",
     "chart.js": "^3.8.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.3",
     "eslint": "^8.17.0",
     "eslint-plugin-vue": "^9.1.0",
+    "jsdom": "^20.0.0",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",
     "primeflex": "^3.2.1",
@@ -37,6 +42,7 @@
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
     "vite-plugin-compression": "^0.5.1",
+    "vitest": "^0.18.0",
     "vue-tsc": "^0.34.7"
   }
 }

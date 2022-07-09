@@ -16,6 +16,7 @@
 
         <!-- badge -->
         <div class="mt-2">
+          <Image class="mr-1" :src="node" alt="Node.js" />
           <Image class="mr-1" :src="coverage" alt="Coverage" />
           <Image :src="mit" alt="Lisence" />
         </div>
@@ -84,7 +85,8 @@
   ]
 
   const mit = 'https://img.shields.io/badge/License-MIT-0284C7.svg?style=flat-square'
-  const coverage = 'https://img.shields.io/badge/Coverage-95%25-84CC16.svg?style=flat-square'
+  const coverage = 'https://img.shields.io/badge/Coverage-87.09%25-84CC16.svg?style=flat-square'
+  const node = 'https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square'
 
   const url = {
     admin: 'https://github.com/kensoz/Rrea-admin',

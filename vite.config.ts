@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import viteCompression from 'vite-plugin-compression'
@@ -13,5 +15,11 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+  },
+
+  // @ts-ignore → vitestが無効しないように
+  test: {
+    globals: true,
+    environment: 'jsdom',
   },
 })
