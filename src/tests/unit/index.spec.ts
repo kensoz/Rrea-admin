@@ -41,7 +41,7 @@ describe('ホームページテスト', (): void => {
   homepageTest()
 })
 
-// 管理者ダイアログ
-describe('管理者ダイアログ', (): void => {
+// ダイアログテスト
+describe('ダイアログテスト', (): void => {
   dialogPorpsTest()
 })
