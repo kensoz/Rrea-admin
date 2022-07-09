@@ -16,7 +16,7 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 + レスポンシブ対応
 + ダークモード、テーマシステム
 + データのCRUD
-+ Jestによる自動テスト、PurgeCSSによる使っていない CSS を削除
++ Vitestによる自動テスト、PurgeCSSによる使っていない CSS を削除
 
 
 
