@@ -45,11 +45,11 @@
   import useHooks from '../../hooks/useHooks'
 
   // ----- AsyncComponent -----
+  const LineChart = defineAsyncComponent(() => import('../../components/analyse/LineChart.vue'))
   const HomeWelcome = defineAsyncComponent(() => import('../../components/dashboard/HomeWelcome.vue'))
   const HomeClient = defineAsyncComponent(() => import('../../components/dashboard/HomeClient.vue'))
   const HomeData = defineAsyncComponent(() => import('../../components/dashboard/HomeData.vue'))
   const HomeLink = defineAsyncComponent(() => import('../../components/dashboard/HomeLink.vue'))
-  const LineChart = defineAsyncComponent(() => import('../../components/analyse/lineChart.vue'))
 
   // ----- use hooks -----
   const { route } = useHooks()

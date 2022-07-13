@@ -1,17 +1,17 @@
 // ------------------------------
 // *
 // * Vue Router 4x
-// * Router Mode : HTML5
+// * Router Mode : Hash
 // *
 // ------------------------------
 
-import { Router, createRouter, createWebHistory } from 'vue-router'
+import { Router, createRouter, createWebHashHistory } from 'vue-router'
 import { ADMIN_TOKEN } from '../store/type'
 import { routes } from './routes'
 
 // router
 const router: Router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 

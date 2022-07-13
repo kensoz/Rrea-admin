@@ -10,7 +10,7 @@ module.exports = {
           content: ['./**/*.vue'],
           blocklist: [/^p-colorpicker/],
           safelist: {
-            deep: [/p-message$/],
+            deep: [/p-message$/, /block$/, /^lg:/, /^md:/, /^sm:/, /^xl:/, /^lg:/],
           },
         }),
   ],

@@ -4,7 +4,7 @@
       <!-- ナビボタン in moblie -->
       <Button
         icon="pi pi-bars"
-        class="inline-flex lg:hidden p-button-rounded p-button-outlined p-button-sm"
+        class="block lg:hidden p-button-rounded p-button-outlined p-button-sm"
         @click="isNavBar = !isNavBar"
       />
 
