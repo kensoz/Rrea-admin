@@ -1,32 +1,28 @@
 import { mount } from '@vue/test-utils'
 import { test, expect } from 'vitest'
+import { plugins } from '../config'
 // primevue
-import PrimeVue from 'primevue/config'
+import Dialog from 'primevue/dialog'
+import Image from 'primevue/image'
 import Button from 'primevue/button'
 import Message from 'primevue/message'
 import Dropdown from 'primevue/dropdown'
-import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import FileUpload from 'primevue/fileupload'
-import ToastService from 'primevue/toastservice'
-import ConfirmationService from 'primevue/confirmationservice'
 // コンポーネント
-import AppAdminDialog from '../../components/base/AppAdminDialog.vue'
-import AppFormDialog from '../../components/base/AppFormDialog.vue'
-import AppNemberDialog from '../../components/base/AppNemberDialog.vue'
-
-// ----- コンフィグ -----
-const global = {
-  components: { Dialog, Dropdown, Button, InputText, Message, FileUpload },
-  plugins: [PrimeVue, ToastService, ConfirmationService],
-}
+import AppAdminDialog from '../../../components/base/AppAdminDialog.vue'
+import AppFormDialog from '../../../components/base/AppFormDialog.vue'
+import AppNemberDialog from '../../../components/base/AppNemberDialog.vue'
 
 // ----- ダイアログテスト -----
 export const dialogPorpsTest = (): void => {
   // 管理者ダイアログ
   test('管理者ダイアログ', async (): Promise<void> => {
     const wrapper = await mount(AppAdminDialog, {
-      global: global,
+      global: {
+        components: { Dialog, Button, InputText, Message },
+        plugins: plugins,
+      },
       props: {
         visible: true,
         adminId: 'guest',
@@ -39,7 +35,10 @@ export const dialogPorpsTest = (): void => {
   // フォームダイアログ
   test('フォームダイアログ', async (): Promise<void> => {
     const wrapper = await mount(AppFormDialog, {
-      global: global,
+      global: {
+        components: { Dialog, Button, InputText, Message },
+        plugins: plugins,
+      },
       props: {
         visible: true,
         mode: 'create',
@@ -56,7 +55,10 @@ export const dialogPorpsTest = (): void => {
   // メンバーダイアログ
   test('メンバーダイアログ', async (): Promise<void> => {
     const wrapper = await mount(AppNemberDialog, {
-      global: global,
+      global: {
+        components: { Dialog, Dropdown, Button, InputText, Message, FileUpload, Image },
+        plugins: plugins,
+      },
       props: {
         visible: true,
         mode: 'create',

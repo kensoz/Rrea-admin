@@ -75,8 +75,6 @@
     confirm: '',
   })
 
-  console.log(passWord)
-
   // 送信前にチェック
   let isBlank = ref<boolean>(false)
   let isDuplicate = ref<boolean>(false)

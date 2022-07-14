@@ -31,6 +31,7 @@
           <div class="flex flex-row justify-content-between">
             <div class="flex flex-row">
               <Button
+                data-test="delete"
                 label="ログアウト"
                 icon="pi pi-sign-out"
                 class="p-button-help p-button-sm mr-2"

@@ -1,28 +1,14 @@
 import { mount } from '@vue/test-utils'
 import { test, expect } from 'vitest'
-import { createPinia } from 'pinia'
-import { routes } from '../../router/routes'
-import { createRouter, createWebHistory } from 'vue-router'
+import { plugins } from '../config'
 // primevue
-import PrimeVue from 'primevue/config'
 import Menu from 'primevue/menu'
 import Image from 'primevue/image'
 import Button from 'primevue/button'
-import ToastService from 'primevue/toastservice'
-import ConfirmationService from 'primevue/confirmationservice'
 // コンポーネント
-import Footer from '../../layouts/Footer.vue'
-import Side from '../../layouts/Side.vue'
-import Header from '../../layouts/Header.vue'
-
-// ----- コンフィグ -----
-// router
-const router = createRouter({
-  history: createWebHistory(),
-  routes: routes,
-})
-// store
-const pinia = createPinia()
+import Footer from '../../../layouts/Footer.vue'
+import Side from '../../../layouts/Side.vue'
+import Header from '../../../layouts/Header.vue'
 
 // ----- レイアウトテスト -----
 export const layoutTest = (): void => {
@@ -38,7 +24,7 @@ export const layoutTest = (): void => {
     const wrapper = await mount(Side, {
       global: {
         components: { Menu },
-        plugins: [router, PrimeVue, ConfirmationService, pinia],
+        plugins: plugins,
       },
     })
 
@@ -53,7 +39,7 @@ export const layoutTest = (): void => {
     const wrapper = await mount(Header, {
       global: {
         components: { Menu, Image, Button },
-        plugins: [router, PrimeVue, ToastService, ConfirmationService, pinia],
+        plugins: plugins,
       },
     })
 

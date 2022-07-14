@@ -1,16 +1,13 @@
 import { describe } from 'vitest'
-import { loginTest } from './login.unit'
-import { formTest } from './form.unit'
-import { nemberTest } from './nember.unit'
-import { systemTest } from './system.unit'
-import { layoutTest } from './layout.unit'
-import { homepageTest } from './homepage.unit'
-import { dialogPorpsTest } from './dialogPorps.unit'
+import { loginTest } from './items/login.unit'
+import { formTest } from './items/form.unit'
+import { nemberTest } from './items/nember.unit'
+import { systemTest } from './items/system.unit'
+import { layoutTest } from './items/layout.unit'
+import { homepageTest } from './items/homepage.unit'
+import { dialogPorpsTest } from './items/dialogPorps.unit'
 
 // ----- 単体テスト -----
-// axiosテストについて → vitest issues#284: https://github.com/vitest-dev/vitest/issues/284
-
-// ----- テスト -----
 // フォームテスト
 describe('フォームテスト', (): void => {
   formTest()
