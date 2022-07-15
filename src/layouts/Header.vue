@@ -81,7 +81,7 @@
 
   // 管理者オプション
   const items = ref([
-    { label: 'Clientサイト', icon: 'pi pi-external-link', url: '' },
+    { label: 'Clientサイト', icon: 'pi pi-external-link', url: 'http://rrea-client.live' },
     { label: 'Client GitHub', icon: 'pi pi-github', url: 'https://github.com/kensoz/Rrea-client' },
     { separator: true },
     { label: '管理者設定', icon: 'pi pi-user-edit', to: '/auth' },

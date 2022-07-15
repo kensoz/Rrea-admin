@@ -56,6 +56,6 @@
     { id: 1, text: 'Admin-GitHub', icon: 'pi pi-github', link: 'https://github.com/kensoz/Rrea-admin' },
     { id: 2, text: 'Server-GitHub', icon: 'pi pi-github', link: 'https://github.com/kensoz/Rrea-server' },
     { id: 3, text: 'Client-GitHub', icon: 'pi pi-github', link: 'https://github.com/kensoz/Rrea-client' },
-    { id: 4, text: 'Clinetサイト', icon: 'pi pi-external-link', link: '' },
+    { id: 4, text: 'Clinetサイト', icon: 'pi pi-external-link', link: 'http://rrea-client.live' },
   ]
 </script>

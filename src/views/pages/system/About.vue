@@ -36,18 +36,50 @@
         <div class="mt-1">
           <Button
             icon="pi pi-external-link"
-            label="個人GitHub"
+            label="個人GitHub ホームページ"
             class="p-button-sm p-button-outlined"
             @click="link(url.github)"
           />
         </div>
         <div class="my-1">
-          <Button icon="pi pi-github" label="Admin-GitHub（本プロジェクト）" class="p-button-sm p-button-outlined" />
+          <Button
+            icon="pi pi-github"
+            label="Admin-GitHub（本プロジェクト）"
+            class="p-button-sm p-button-outlined"
+            @click="link(url.admin)"
+          />
         </div>
         <div>
-          <Button icon="pi pi-github" label="Client-GitHub" class="p-button-sm p-button-outlined mr-1" />
-          <Button icon="pi pi-external-link" label="Client ホームページ" class="p-button-sm p-button-outlined mr-1" />
-          <Button icon="pi pi-github" label="Server-GitHub" class="p-button-sm p-button-outlined mt-1 md:mt-0" />
+          <Button
+            icon="pi pi-github"
+            label="Client-GitHub"
+            class="p-button-sm p-button-outlined mr-1"
+            @click="link(url.client)"
+          />
+          <Button
+            icon="pi pi-external-link"
+            label="Client ホームページ"
+            class="p-button-sm p-button-outlined mr-1"
+            @click="link(url.clinetSite)"
+          />
+          <Button
+            icon="pi pi-github"
+            label="Server-GitHub"
+            class="p-button-sm p-button-outlined mt-1 md:mt-0"
+            @click="link(url.server)"
+          />
+        </div>
+
+        <!-- システムアーキテクチャー -->
+        <label class="mt-3 font-semibold">システムアーキテクチャー</label>
+        <div class="mt-1">
+          <Image
+            class="border-1 border-100"
+            src="https://s2.loli.net/2022/07/15/62gMpWGVUJ3RPLs.jpg"
+            alt="system"
+            width="280"
+            preview
+          />
         </div>
 
         <!-- スター -->
@@ -85,13 +117,13 @@
   ]
 
   const mit = 'https://img.shields.io/badge/License-MIT-0284C7.svg?style=flat-square'
-  const coverage = 'https://img.shields.io/badge/Coverage-87.09%25-84CC16.svg?style=flat-square'
+  const coverage = 'https://img.shields.io/badge/Coverage-89.45%25-84CC16.svg?style=flat-square'
   const node = 'https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square'
 
   const url = {
     admin: 'https://github.com/kensoz/Rrea-admin',
     client: 'https://github.com/kensoz/Rrea-client',
-    clinetSite: '',
+    clinetSite: 'http://rrea-client.live',
     server: 'https://github.com/kensoz/Rrea-server',
     github: 'https://github.com/kensoz',
   }

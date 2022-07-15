@@ -11,7 +11,12 @@
       <!-- ボタングループ -->
       <div class="mb-2 lg:mb-0">
         <Button label="メンバー管理" icon="pi pi-id-card" class="p-button-sm mr-1" @click="route('/data')" />
-        <Button label="Clientサイト" icon="pi pi-external-link" class="p-button-outlined p-button-sm mr-1" />
+        <Button
+          label="Clientサイト"
+          icon="pi pi-external-link"
+          class="p-button-outlined p-button-sm mr-1"
+          @click="link('http://rrea-client.live')"
+        />
         <Button
           icon="pi pi-refresh"
           class="p-button-outlined p-button-sm mr-1"
@@ -58,8 +63,8 @@
           >
             <!-- 写真側 -->
             <div class="mr-2 md:mr-3 border-1 border-100">
-              <Image class="hidden lg:block" :src="item.photo" alt="avatars" width="90" height="120" />
-              <Image class="block lg:hidden" :src="item.photo" alt="avatars" width="51" height="68" />
+              <Image class="hidden lg:block" :src="item.photo" alt="avatars" width="90" height="120" preview />
+              <Image class="block lg:hidden" :src="item.photo" alt="avatars" width="51" height="68" preview />
             </div>
 
             <!-- インフォメーション側 -->
