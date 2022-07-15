@@ -1,8 +1,8 @@
 # ----- Github Action -----
 name: Rrea-admin
 # 実行のタイミング
-# on: workflow_dispatch
-on: [push]
+on: workflow_dispatch
+# on: [push]
 # 実行の流れ
 jobs:
   deploy:
@@ -18,4 +18,7 @@ jobs:
           port: ${{ secrets.TENCENT_UBUNTU_PORT }}
           script: |
             sudo su root
-            echo "test"
+            cd /root/Desktop/rrea/Rrea-admin
+            git pull origin master
+            cd /root/Desktop/rrea
+            docker compose up -d --build
