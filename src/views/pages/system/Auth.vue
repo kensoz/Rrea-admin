@@ -42,7 +42,11 @@
             <div>
               <span class="p-input-icon-left">
                 <i class="pi pi-search" />
-                <InputText v-model="filters['global'].value" class="p-inputtext-sm" placeholder="検索" />
+                <InputText
+                  v-model="filters['global'].value"
+                  class="p-inputtext-sm max-w-10rem md:max-w-max"
+                  placeholder="検索"
+                />
               </span>
             </div>
           </div>
