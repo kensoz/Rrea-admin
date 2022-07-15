@@ -1,1 +1,0 @@
-import{d as n,r as a,b as t,y as c}from"./index.f881c86f.js";const s=n({name:"AppBreadcrumb",props:{label:null},setup(e){const o=e;return(l,p)=>{const r=a("Breadcrumb");return t(),c(r,{home:{icon:"pi pi-th-large",to:"/"},model:o.label},null,8,["model"])}}});export{s as default};
