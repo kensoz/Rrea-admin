@@ -9,16 +9,10 @@ LABEL maintainer="renhou"
 WORKDIR /usr/src/Rrea-admin
 
 # package.jsonとyarn.lockコピー
-COPY ["package.json", "yarn.lock", "./"]
-
-# インストール
-RUN yarn
+COPY ["dist", "./"]
 
 # ファイルコピー
 COPY . .
-
-# ビルド
-RUN yarn build
 
 # 次のイメージ指定
 FROM nginx:latest
