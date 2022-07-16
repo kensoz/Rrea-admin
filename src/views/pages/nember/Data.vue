@@ -38,7 +38,7 @@
                 <i class="pi pi-search" />
                 <InputText
                   v-model="filters['global'].value"
-                  class="p-inputtext-sm max-w-8rem sm:max-w-10rem md:max-w-max"
+                  class="p-inputtext-sm max-w-8rem sm:max-w-10rem md:max-w-full"
                   placeholder="検索"
                 />
               </span>
@@ -122,6 +122,7 @@
   // リセット
   const reset = async (): Promise<void> => {
     nembers.value = await getNemberItems('user')
+    messageToast()
   }
 
   // ----- ダイアログボック -----

@@ -67,15 +67,6 @@
               までご連絡ください
             </small>
           </div>
-
-          <div>
-            <span class="mr-2 text-bluegray-700"><i class="pi pi-github" style="font-size: 0.5rem" /></span>
-            <small>
-              " Talk is cheap. Show me the
-              <span class="underline font-medium"><a href="https://github.com/kensoz/Rrea-admin">Code</a></span>
-              . "
-            </small>
-          </div>
         </div>
       </div>
     </div>

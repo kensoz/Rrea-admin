@@ -1,0 +1,1 @@
+import{d as a,b as l,c as n,e as s,G as o,C as c}from"./index.b9160266.js";const i={class:"mb-3 mt-5 text-lg font-semibold"},p={class:"mr-2 text-primary"},u=a({name:"AppTitle",props:{label:null,icon:null},setup(t){const e=t;return(r,m)=>(l(),n("div",i,[s("span",p,[s("i",{class:o(`pi ${e.icon}`)},null,2)]),s("span",null,c(e.label),1)]))}});export{u as default};

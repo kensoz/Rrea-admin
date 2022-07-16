@@ -75,7 +75,7 @@
         <div class="mt-1">
           <Image
             class="border-1 border-100"
-            src="https://s2.loli.net/2022/07/15/62gMpWGVUJ3RPLs.jpg"
+            src="https://s2.loli.net/2022/07/16/Y7BqVkciA9MCLQZ.jpg"
             alt="system"
             width="280"
             preview
