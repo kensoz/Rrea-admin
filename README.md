@@ -1,6 +1,6 @@
 # 🔵 Rrea-Admin
 
-![Node](https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square)  ![Coverage](https://img.shields.io/badge/Coverage-89.45%25-84CC16.svg?style=flat-square)  ![npm](https://img.shields.io/badge/npm-v0.3.0-84CC16.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-MIT-0284C7.svg?logo=&style=flat-square)
+![Node](https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square)  ![Coverage](https://img.shields.io/badge/Coverage-89.45%25-84CC16.svg?style=flat-square)  ![npm](https://img.shields.io/badge/npm-v2.0.0-84CC16.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-MIT-0284C7.svg?logo=&style=flat-square)
 
 Demo:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・  GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client) | [Client-Collection](https://github.com/kensoz/Rrea-client-collection)**
 
@@ -26,7 +26,7 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 + ⚙️ TypeScript
 + 🎨 PrimeVue  + SASS
 + 📑 Eslint + Prettier
-+ 🔌 Vitest + Vue-Test-Utils（Coverage : **89.45%**）
++ 🔌 Vitest + Vue-Test-Utils
 + 🏭 Vite
 + 📦 Yarn
 + 🔺 RESTful API
@@ -35,7 +35,7 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 
 ## システムアーキテクチャー
 
-![system](https://s2.loli.net/2022/07/15/62gMpWGVUJ3RPLs.jpg)
+![system](https://s2.loli.net/2022/07/16/Y7BqVkciA9MCLQZ.jpg)
 
 
 
@@ -46,9 +46,9 @@ ChromeとEdgeのおすすめです！ \
 
 |         | Chrome | Edge | Safari 10+ |  IE  | Firefox |
 | :-----: | :----: | :--: | :--------: | :--: | :-----: |
-| desktop |   ✅    |  ✅   |     ✅      |  ❌   |    ⚠    |
+| desktop |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
 | mobile  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
-| tablet  |   ✅    |  ✅   |     ✅      |  ❌   |    ⚠    |
+| tablet  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
 
 
 
