@@ -13,7 +13,7 @@ jobs:
       - name: send codecov
         uses: actions/checkout@master
       - name: install Dependencies
-        run: npm install
+        run: npm install --force
       - name: run Test
         run: npx c8 --reporter=lcov npm test && npx codecov
       - name: upload Coverage
