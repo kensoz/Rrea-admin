@@ -15,20 +15,20 @@ jobs:
       - name: install Dependencies
         run: npm install
       - name: run Test
-        run: npm run test:coverage
+        run: npx c8 --reporter=lcov npm test && npx codecov
       - name: upload Coverage
         uses: codecov/codecov-action@v1
       # depoly
-      - name: access server and deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.TENCENT_UBUNTU_HOST }}
-          username: ${{ secrets.TENCENT_UBUNTU_USERNAME }}
-          password: ${{ secrets.TENCENT_UBUNTU_PASSWORD }}
-          port: ${{ secrets.TENCENT_UBUNTU_PORT }}
-          script: |
-            sudo su root
-            cd /root/Desktop/rrea/Rrea-admin
-            git pull origin master
-            cd /root/Desktop/rrea
-            docker compose up -d --build
+      # - name: access server and deploy
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.TENCENT_UBUNTU_HOST }}
+      #     username: ${{ secrets.TENCENT_UBUNTU_USERNAME }}
+      #     password: ${{ secrets.TENCENT_UBUNTU_PASSWORD }}
+      #     port: ${{ secrets.TENCENT_UBUNTU_PORT }}
+      #     script: |
+      #       sudo su root
+      #       cd /root/Desktop/rrea/Rrea-admin
+      #       git pull origin master
+      #       cd /root/Desktop/rrea
+      #       docker compose up -d --build
