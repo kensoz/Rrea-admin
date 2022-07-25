@@ -11,11 +11,8 @@ node_modules
 # dist
 dist-ssr
 *.local
-.vscode/
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
 *.code-workspace
 .idea
 .DS_Store
@@ -25,3 +22,8 @@ dist-ssr
 *.sln
 *.sw?
 coverage
+
+# vs code config
+#.vscode/
+# .vscode/*
+# !.vscode/extensions.json
