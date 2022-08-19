@@ -6,9 +6,9 @@ Demo:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  
 
 ##### Rrea-Admin とは
 
-メンバー位置と情報の管理システムの管理者用サイト(Admin)です。\
-[APIサーバ(Server)](https://github.com/kensoz/Rrea-server)、[メンバー用サイト(Client)](https://github.com/kensoz/Rrea-client)、管理者用サイト(Admin)にFEとBEを分けている仕組みです。\
-JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、構築しました。
+メンバー情報管理システムの管理者用サイト(Admin)です。  
+[APIサーバ(Server)](https://github.com/kensoz/Rrea-server)、[メンバー用サイト(Client)](https://github.com/kensoz/Rrea-client)、管理者用サイト(Admin)にFEとBEを分けている仕組みです。  
+JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し、構築しました。
 
 ##### メイン機能
 
@@ -42,8 +42,8 @@ JSフレームワークはVue.js、UIライブラリはPrimeVueを選定し、�
 
 ## ブラウザ対応
 
-ChromeとEdgeのおすすめです！ \
-✅：Stable  ・  ⚠：Unstable  ・  ❌：Not supported
+ChromeとEdgeのおすすめです！  
+✅：Stable ・  ❌：Not supported
 
 |         | Chrome | Edge | Safari 10+ |  IE  | Firefox |
 | :-----: | :----: | :--: | :--------: | :--: | :-----: |
@@ -87,6 +87,6 @@ yarn test
 
 + [エラーコード対照表](https://github.com/kensoz/Rrea-server/blob/master/docs/error.md)
 + [Docker-Compose.yml](https://github.com/kensoz/Rrea-server/blob/master/docs/docker-compose.yml)
-+ vs codeでVite3によってVue.js3のTS環境を作成ESLintとPrettierを追加：[Qiita](https://qiita.com/kensoz/items/053c7103cd073d09f81e)
-+ VitestによってVueコンポーネント中のAxiosをテスト：[Qiita](https://qiita.com/kensoz/items/cd5bcd644d8ac3fd6774)
-+ Setupで🍍Pinia.jsを使う：[Qiita](https://qiita.com/kensoz/items/f1d4204f218651d2b6f9)
++ vs codeでVite3によってVue.js3のTS環境を作成ESLintとPrettierを追加：[Qiita](https://qiita.com/kensoz/items/053c7103cd073d09f81e) ・  [掘金](https://juejin.cn/post/7129689902077181960) ・  [思否](https://segmentfault.com/a/1190000042289142)
++ VitestによってVueコンポーネント中のAxiosをテスト：[Qiita](https://qiita.com/kensoz/items/cd5bcd644d8ac3fd6774) ・  [掘金](https://juejin.cn/post/7130069579182637087) ・  [思否](https://segmentfault.com/a/1190000042295748)
++ Setupで🍍Pinia.jsを使う：[Qiita](https://qiita.com/kensoz/items/f1d4204f218651d2b6f9) ・  [思否](https://segmentfault.com/a/1190000042290316)
