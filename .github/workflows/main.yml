@@ -18,7 +18,7 @@ jobs:
         run: npx c8 --reporter=lcov npm test && npx codecov
       - name: upload Coverage
         uses: codecov/codecov-action@v1
-      depoly
+      # depoly
       - name: access server and deploy
         uses: appleboy/ssh-action@master
         with:
