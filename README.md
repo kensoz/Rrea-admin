@@ -24,7 +24,8 @@ JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し�
 
 + ⚡️ Vue.js 3 (Composition API)
 + ⚙️ TypeScript
-+ 🎨 PrimeVue  + SASS
++ 🎨 PrimeVue
++ 🍍 Pinia.js
 + 📑 Eslint + Prettier
 + 🔌 Vitest + Vue-Test-Utils
 + 🔩 GitHub Actions + Codecov
