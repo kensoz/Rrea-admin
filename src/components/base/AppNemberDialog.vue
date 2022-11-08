@@ -215,10 +215,12 @@
       [10, 'ワヲン'],
     ])
 
-    for (let i = 1; i < 11; i++) {
-      if (kana.get(i)?.indexOf(str) !== -1) return i.toString()
+    // 存在の場合、カタカナの行数のkeyを返す
+    for (let [key, value] of kana.entries()) {
+      if (value.indexOf(str) !== -1) return key.toString()
     }
 
+    // 存在しない場合、11を返す
     return '11'
   }
 
