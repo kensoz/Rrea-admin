@@ -1,2 +1,9 @@
 /* ライトモードCSS変数 */
-:root {--ra-layout: #1b1a19;--ra-color: #faf9f8;--ra-bg: #292827;--ra-border: #3b3a39;--ra-hover:  #323130;--surface-100: #3b3a39;}
+:root {
+  --ra-layout: #1b1a19;
+  --ra-color: #faf9f8;
+  --ra-bg: #292827;
+  --ra-border: #3b3a39;
+  --ra-hover: #323130;
+  --surface-100: #3b3a39;
+}

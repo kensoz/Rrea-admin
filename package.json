@@ -9,7 +9,13 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "js:check": "eslint src/*.{ts,vue} && eslint src/**/*.{ts,vue}",
+    "js:fix": "eslint --fix src/*.{ts,vue} && eslint --fix src/**/*.{ts,vue}",
+    "editorconfig:check": "editorconfig-checker",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "pinia": "^2.0.14",
@@ -30,6 +36,7 @@
     "chart.js": "^3.8.0",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.3",
+    "editorconfig-checker": "^4.0.2",
     "eslint": "^8.17.0",
     "eslint-plugin-vue": "^9.1.0",
     "jsdom": "^20.0.0",
@@ -39,10 +46,14 @@
     "primeicons": "^5.0.0",
     "primevue": "^3.12.6",
     "sass": "^1.53.0",
+    "simple-git-hooks": "^2.8.1",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
     "vite-plugin-compression": "^0.5.1",
     "vitest": "^0.18.0",
     "vue-tsc": "^0.34.7"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx prettier --write ."
   }
 }

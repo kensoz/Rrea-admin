@@ -13,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 0.85rem;
-  font-family: 'Murecho',  sans-serif;
+  font-family: 'Murecho', sans-serif;
 }
 
 /* エレメントリセット */
@@ -57,23 +57,15 @@ img {
 /* ########## Reuse Classes ########## */
 // section
 .my-section {
-  @include styleclass(
-    'flex flex-column'
-  );
+  @include styleclass('flex flex-column');
 }
 
 // section contents
 .my-contents {
-  @include styleclass(
-    'px-2 pb-2 pt-1 md:px-6 md:pb-6 md:pt-3'
-  );
+  @include styleclass('px-2 pb-2 pt-1 md:px-6 md:pb-6 md:pt-3');
 }
 
 // dashboard contents
 .my-dashcontents {
-  @include styleclass(
-    'px-2 pb-2 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100'
-  );
+  @include styleclass('px-2 pb-2 md:px-3 md:pb-2 md:pt-2 xl:px-6 xl:pb-3 xl:pt-3 border-bottom-1 border-100');
 }
-
-

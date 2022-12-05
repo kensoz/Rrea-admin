@@ -10,4 +10,5 @@ module.exports = {
   requirePragma: false,
   vueIndentScriptAndStyle: true,
   htmlWhitespaceSensitivity: 'css',
+  endOfLine: 'crlf',
 }

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <div class="flex flex-column">
     <!-- タイトル -->
