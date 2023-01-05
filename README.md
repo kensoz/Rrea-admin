@@ -36,7 +36,7 @@ JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し�
 
 
 ## システムアーキテクチャー
-
+Cloud service：Tencent Cloud
 ![system](https://s2.loli.net/2022/07/16/Y7BqVkciA9MCLQZ.jpg)
 
 
