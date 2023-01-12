@@ -4,13 +4,13 @@
 
 Site:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・  GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client) | [Client-Collection](https://github.com/kensoz/Rrea-client-collection)**
 
-##### Rrea-Admin とは
+## Rrea-Admin とは
 
 メンバー情報管理システムの管理者用サイト(Admin)です。  
 [APIサーバ(Server)](https://github.com/kensoz/Rrea-server)と[メンバー用サイト(Client)](https://github.com/kensoz/Rrea-client)、管理者用サイト(Admin)にFEとBEを分けている仕組みです。  
 JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し、構築しました。
 
-##### メイン機能
+## メイン機能
 
 + ユーザー認証&権限システム、JWT認証、パスワード暗号化
 + レスポンシブ対応
