@@ -2,7 +2,7 @@
 
 ![github](https://github.com/kensoz/Rrea-admin/actions/workflows/main.yml/badge.svg)  [![codecov](https://codecov.io/gh/kensoz/Rrea-admin/branch/master/graph/badge.svg?token=UNWG7U515R)](https://codecov.io/gh/kensoz/Rrea-admin)  ![Node](https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square)  ![npm](https://img.shields.io/badge/npm-v2.0.0-84CC16.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-MIT-0284C7.svg?logo=&style=flat-square)
 
-Site:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・  GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client) | [Client-Collection](https://github.com/kensoz/Rrea-client-collection)**
+Site:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・  GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client)**
 
 ## Rrea-Admin とは
 
@@ -10,6 +10,7 @@ Site:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  
 [APIサーバ(Server)](https://github.com/kensoz/Rrea-server)と[メンバー用サイト(Client)](https://github.com/kensoz/Rrea-client)、管理者用サイト(Admin)にFEとBEを分けている仕組みです。  
 JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し、構築しました。
 
+<!--
 ## メイン機能
 
 + ユーザー認証&権限システム、JWT認証、パスワード暗号化
@@ -19,6 +20,17 @@ JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し�
 + Vitest、Vue-Test-Utilsによる自動テスト、PurgeCSSによる使っていない CSS を削除
 
 
+## ブラウザ対応
+
+✅：Stable ・  ❌：Not supported
+
+|         | Chrome | Edge | Safari 10+ |  IE  | Firefox |
+| :-----: | :----: | :--: | :--------: | :--: | :-----: |
+| desktop |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
+| mobile  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
+| tablet  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
+
+-->
 
 ## スタック
 
@@ -38,19 +50,6 @@ JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し�
 ## システムアーキテクチャー
 Cloud service：Tencent Cloud
 ![system](https://s2.loli.net/2022/07/16/Y7BqVkciA9MCLQZ.jpg)
-
-
-
-## ブラウザ対応
-
-✅：Stable ・  ❌：Not supported
-
-|         | Chrome | Edge | Safari 10+ |  IE  | Firefox |
-| :-----: | :----: | :--: | :--------: | :--: | :-----: |
-| desktop |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
-| mobile  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
-| tablet  |   ✅    |  ✅   |     ✅      |  ❌   |    ✅    |
-
 
 
 ## 使用
