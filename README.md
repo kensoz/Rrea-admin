@@ -2,8 +2,10 @@
 
 ![github](https://github.com/kensoz/Rrea-admin/actions/workflows/main.yml/badge.svg)  [![codecov](https://codecov.io/gh/kensoz/Rrea-admin/branch/master/graph/badge.svg?token=UNWG7U515R)](https://codecov.io/gh/kensoz/Rrea-admin)  ![Node](https://img.shields.io/badge/Node.js-v18.0.0-fb7185.svg?logo=&style=flat-square)  ![npm](https://img.shields.io/badge/npm-v2.0.0-84CC16.svg?style=flat-square)  ![License](https://img.shields.io/badge/License-MIT-0284C7.svg?logo=&style=flat-square)
 
-Site（現時点公開停止中）:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・  GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client)**
+<!-- Site（現時点公開停止中）:  **[Client](http://rrea-client.live) | [Admin](http://rrea-admin.live)**  ・   -->
+GitHub:   **[Server](https://github.com/kensoz/Rrea-server) | [Client](https://github.com/kensoz/Rrea-client)**
 
+<!--
 ## Rrea-Admin とは
 
 メンバー情報管理システムの管理者用サイト(Admin)です。  
@@ -48,7 +50,7 @@ JSフレームワークはVue.jsで、UIライブラリはPrimeVueを選定し�
 
 
 ## システムアーキテクチャー
-Cloud service：Tencent Cloud
+
 ![system](https://s2.loli.net/2022/07/16/Y7BqVkciA9MCLQZ.jpg)
 
 
